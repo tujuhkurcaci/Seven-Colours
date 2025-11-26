@@ -8,8 +8,181 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
-    /* PASTE ALL THE CSS FROM ABOVE HERE */
-    /* Pastikan semua CSS yang saya berikan di atas disalin di sini */
+    <style>
+/* ---------------------------------------------------- */
+/* ———————————— BASE STYLES & LAYOUT ———————————— */
+/* ---------------------------------------------------- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: sans-serif;
+    background: #f7f7f7; /* Light grey background */
+    color: #333;
+    min-height: 100vh;
+    display: flex; /* Centering content vertically */
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* ---------------------------------------------------- */
+/* ———————————— MAIN BUTTON TO OPEN MODAL ———————————— */
+/* ---------------------------------------------------- */
+.open-modal-btn {
+    padding: 15px 30px;
+    background: #ff69b4; /* Pink button */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(255, 105, 180, 0.4);
+    transition: all 0.3s ease;
+    text-decoration: none; /* Make sure it doesn't look like a link */
+    text-align: center;
+}
+
+.open-modal-btn:hover {
+    background: #e65a9f; /* Darker pink on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 105, 180, 0.6);
+}
+
+/* ---------------------------------------------------- */
+/* ———————————— MODAL OVERLAY & BOX ———————————— */
+/* ---------------------------------------------------- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Semi-transparent black overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it's on top of everything */
+    opacity: 0; /* Hidden by default */
+    visibility: hidden; /* Hidden by default */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.contact-modal {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 450px; /* Max width like the example */
+    position: relative;
+    transform: translateY(-20px); /* Initial subtle animation */
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .contact-modal {
+    transform: translateY(0);
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.8em;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close-btn:hover {
+    color: #ff69b4; /* Pink on hover */
+}
+
+.contact-modal h2 {
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 25px;
+    text-align: center;
+    border-bottom: 2px solid #ff69b4; /* Pink accent line */
+    padding-bottom: 10px;
+}
+
+/* ---------------------------------------------------- */
+/* ———————————— DIRECT CONTACT BUTTONS ———————————— */
+/* ---------------------------------------------------- */
+.direct-contact-buttons {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 15px; /* Spacing between buttons */
+}
+
+.contact-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 20px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: 600;
+    text-decoration: none;
+    color: white;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.contact-button i { /* For Font Awesome icons */
+    margin-right: 10px;
+    font-size: 1.3em;
+}
+
+.whatsapp-btn {
+    background-color: #25D366; /* WhatsApp Green */
+}
+.whatsapp-btn:hover {
+    background-color: #1DA851;
+    transform: translateY(-2px);
+}
+
+.instagram-btn {
+    background-color: #E4405F; /* Instagram Red/Pink */
+}
+.instagram-btn:hover {
+    background-color: #C13584;
+    transform: translateY(-2px);
+}
+
+.tiktok-btn {
+    background-color: #000000; /* TikTok Black */
+}
+.tiktok-btn:hover {
+    background-color: #333333;
+    transform: translateY(-2px);
+}
+
+/* ---------------------------------------------------- */
+/* ———————————— RESPONSIVE ———————————— */
+/* ---------------------------------------------------- */
+@media (max-width: 500px) {
+    .contact-modal {
+        padding: 20px;
+    }
+    .contact-modal h2 {
+        font-size: 1.5em;
+        margin-bottom: 20px;
+    }
+    .contact-button {
+        font-size: 1em;
+        padding: 12px 15px;
+    }
+}
+</style>
 </style>
 </head>
 <body>
@@ -102,3 +275,4 @@
 
 </body>
 </html>
+
