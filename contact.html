@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Void Star Bearer ✦</title>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background: url("void.png") no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: "Georgia", serif;
+    color: #d8b6ff;
+    text-align: center;
+    overflow-x: hidden;
+  }
+
+  /* Floating particles canvas */
+  #particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .container {
+    margin-top: 60px;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    position: relative;
+    z-index: 5;
+  }
+
+  .noli-icon {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid rgba(255,255,255,0.4);
+    box-shadow: 0 0 40px #8b33ffcc;
+  }
+
+  .title {
+    margin-top: 20px;
+    font-size: 36px;
+    letter-spacing: 3px;
+    color: #e7c9ff;
+    text-shadow: 0 0 14px #9f4bff, 0 0 25px #5a00b8;
+  }
+
+  .subtitle {
+    font-size: 20px;
+    margin-top: 5px;
+    opacity: 0.8;
+    font-style: italic;
+  }
+
+  .box {
+    margin-top: 25px;
+    background: rgba(0, 0, 0, 0.55);
+    border: 2px solid rgba(180,110,255,0.5);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 25px #7a2cff88;
+    backdrop-filter: blur(3px);
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  a.back {
+    display: inline-block;
+    margin-top: 25px;
+    color: #cf9fff;
+    text-decoration: none;
+    font-size: 20px;
+    text-shadow: 0 0 10px #d07bff;
+  }
+
+  a.back:hover {
+    opacity: .7;
+  }
+
+ /* ———————————————— NOLI SOCIAL BUTTONS ———————————————— */
+.social-links {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    align-items: center;
+}
+
+.social-btn {
+    width: 250px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    background: rgba(0,0,0,0.45);
+    border: 2px solid #7449ff;
+    border-radius: 10px;
+    color: #d7c8ff;
+    font-size: 18px;
+    text-decoration: none;
+    letter-spacing: 1px;
+
+    box-shadow:
+        0 0 8px #7449ff,
+        inset 0 0 12px rgba(80,0,255,0.4);
+
+    transition: 0.2s ease-in-out;
+}
+
+.social-btn img {
+    width: 28px;
+    height: 28px;
+    filter: drop-shadow(0 0 4px #7449ff);
+}
+
+.social-btn:hover {
+    transform: scale(1.07);
+    box-shadow:
+        0 0 12px #9b6cff,
+        inset 0 0 20px rgba(120,0,255,0.65);
+    border-color: #9b6cff;
+}
+
+ /* VOID magical link style */
+.beloved {
+  position: relative;
+  color: #c28bff;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 1px;
+  
+  /* breathing glow */
+  animation: voidPulse 3s infinite ease-in-out,
+             voidFlicker 6s infinite steps(10);
+}
+
+/* soft breathing glow */
+@keyframes voidPulse {
+  0% {
+    opacity: .4;
+    text-shadow: 
+      0 0 6px #b56cff,
+      0 0 12px #d8a7ff;
+  }
+  50% {
+    opacity: 1;
+    text-shadow: 
+      0 0 10px #e8cbff,
+      0 0 18px #ffddff;
+  }
+  100% {
+    opacity: .4;
+    text-shadow: 
+      0 0 6px #b56cff,
+      0 0 12px #d8a7ff;
+  }
+}
+
+/* tiny glitch flickers */
+@keyframes voidFlicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    filter: none;
+  }
+  19% {
+    filter: hue-rotate(20deg) brightness(1.3);
+  }
+  23% {
+    filter: hue-rotate(-20deg) brightness(1.1);
+  }
+  55% {
+    filter: brightness(0.7);
+  }
+}
+
+/* floating void particles (CSS-only illusion) */
+.beloved::before,
+.beloved::after {
+  content: "✦";
+  position: absolute;
+  font-size: 10px;
+  color: #e3b0ff;
+  opacity: .7;
+  animation: floatSpark 4s infinite ease-in-out;
+}
+
+.beloved::before {
+  top: -12px;
+  left: -10px;
+}
+
+.beloved::after {
+  bottom: -12px;
+  right: -8px;
+  animation-delay: 2s;
+}
+
+@keyframes floatSpark {
+  0% { transform: translateY(0) translateX(0); opacity: .3; }
+  50% { transform: translateY(-6px) translateX(2px); opacity: 1; }
+  100% { transform: translateY(0) translateX(0); opacity: .3; }
+}
+
+ /* WHISPER BOX */
+.whisper-box {
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(0,0,0,0.45);
+    border: 2px solid #7449ff;
+    border-radius: 12px;
+    box-shadow:
+        0 0 12px #9b6cff,
+        inset 0 0 20px rgba(120,0,255,0.35);
+    backdrop-filter: blur(3px);
+}
+
+.whisper-display {
+    min-height: 80px;
+    padding: 15px;
+    color: #dfc8ff;
+    font-style: italic;
+    font-size: 17px;
+    text-shadow: 0 0 8px #8b33ff88;
+}
+
+.whisper-input-area {
+    margin-top: 12px;
+    display: flex;
+    gap: 10px;
+}
+
+.whisper-input-area input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #a870ff;
+    background: rgba(0,0,0,0.35);
+    color: #e8d8ff;
+}
+
+.whisper-input-area button {
+    padding: 10px 18px;
+    background: #7449ff;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    font-weight: 700;
+    box-shadow: 0 0 12px #7449ff;
+    transition: 0.2s;
+}
+
+.whisper-input-area button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 16px #a870ff;
+}
+
+/* No visible audio controls */
+audio {
+    display: none;
+}
+ 
+  @media (max-width: 600px) {
+    body {
+        background: url("void.png") no-repeat center center;
+        background-size: cover;
+        background-attachment: scroll;
+        padding: 20px 10px;
+    }
+
+    .noli-icon {
+        width: 140px;
+        height: 140px;
+        box-shadow: 0 0 20px #8b33ffaa;
+    }
+
+    .title {
+        font-size: 28px;
+    }
+
+    .box {
+        font-size: 15px;
+        padding: 15px;
+    }
+
+    a.back {
+        font-size: 16px;
+    }
+
+    .social-btn {
+        width: 85%;
+        font-size: 16px;
+        padding: 10px 14px;
+    }
+
+    .social-btn img {
+        width: 24px;
+        height: 24px;
+    }
+
+    .beloved {
+        display: block;
+        font-size: 0.9rem;
+        text-shadow: 0 0 4px #b56cff, 0 0 6px #d8a7ff;
+        padding: 6px 4px;
+    }
+
+    .beloved::before,
+    .beloved::after {
+        font-size: 8px;
+        opacity: .6;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="particles"></canvas>
+
+<!-- Noli Void Ambience -->
+<audio id="voidAudio" loop>
+    <source src="voidsound.mp3" type="audio/mpeg">
+</audio> 
+
+<div class="container">
+  <img src="noli.png" class="noli-icon" alt="Noli Icon">
+
+  <div class="title">THE VOID STAR BEARER</div>
+  <div class="subtitle">Noli</div>
+
+  <div class="box">
+    <p>
+      “꧁…g͟r͟e͟e͟t͟i͟n͟g͟s͟,͟ ͟l͟o͟s͟t͟ ͟w͟a͟n͟d͟e͟r͟e͟r͟.͟…꧂<br><br>
+      The void remembers you.<br>
+      The stars whisper your name.<br><br>
+      Should you seek answers… they will find you first.”
+    </p>
+  </div>
+
+ <div class="whisper-box">
+    <div id="whisperDisplay" class="whisper-display"></div>
+
+    <div class="whisper-input-area">
+        <input id="input" type="text" placeholder="...whisper to Noli">
+        <button onclick="sendWhisper()">Send</button>
+    </div>
+</div>
+
+ <div class="social-links">
+
+    <a href="#" class="social-btn" onclick="voidAlert(event)">
+        <img src="noli-forsaken.gif">
+        YouTube
+    </a>
+
+    <a href="https://www.tiktok.com/@dazahhh_?_r=1&_t=ZS-91Y8GVexxon" class="social-btn">
+        <img src="noli-forsaken.gif">
+        TikTok
+    </a>
+
+    <a href="https://www.instagram.com/koko.miaww" class="social-btn">
+        <img src="noli-forsaken.gif">
+        Instagram
+    </a>
+
+    <a href="#" class="social-btn" onclick="voidAlert(event)">
+        <img src="noli-forsaken.gif">
+        Discord
+    </a>
+
+</div>
+
+  <a href="shop.html" class="back">Leaving so soon,</a>
+
+ <a href="https://vt.tiktok.com/ZSfYHCBCg/" class="beloved">Seven?</a>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const audio = document.getElementById("voidAudio");
+    audio.volume = 0.15; // SUPER subtle, adjust 0.05–0.20 for vibe
+
+    function startVoid() {
+        audio.play().catch(() => {});
+        document.removeEventListener("click", startVoid);
+    }
+
+    document.addEventListener("click", startVoid);
+});
+
+/* Floating Void Particles */
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+canvas.width = innerWidth;
+canvas.height = innerHeight;
+
+addEventListener("resize", () => {
+  canvas.width = innerWidth;
+  canvas.height = innerHeight;
+});
+
+const parts = [];
+
+function spawnParticle() {
+  const size = Math.random() * 2 + 1;
+  parts.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    size,
+    speedX: (Math.random() - 0.5) * 0.4,
+    speedY: (Math.random() - 0.5) * 0.4,
+    alpha: Math.random() * 0.7 + 0.3
+  });
+}
+
+for (let i = 0; i < 120; i++) spawnParticle();
+
+function animateParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  parts.forEach(p => {
+    ctx.fillStyle = `rgba(180,110,255,${p.alpha})`;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    ctx.fill();
+
+    p.x += p.speedX;
+    p.y += p.speedY;
+
+    if (p.x < 0) p.x = canvas.width;
+    if (p.x > canvas.width) p.x = 0;
+    if (p.y < 0) p.y = canvas.height;
+    if (p.y > canvas.height) p.y = 0;
+  });
+
+  requestAnimationFrame(animateParticles);
+}
+
+animateParticles();
+
+function voidAlert(event) {
+  event.preventDefault(); // prevents the link from opening
+  alert("My dear, I cannot fulfill such request.");
+}
+
+// =========================
+// TRIGGER COUNTERS (SEVEN, N7)
+// =========================
+
+let SevenCount = 0;
+const SevenKeywords = ["seven", "sev"];
+
+let n7Count = 0;
+const n7Keywords = ["n7", "7n7", "007n7"];
+
+// =========================
+// MOOD REPLY SYSTEM
+// =========================
+
+const moodReplies = {
+    neutral: [
+        "I'm listening. Go on.",
+        "Hn... unusual choice of words.",
+        "I see. Keep talking.",
+        "..Try again."
+    ],
+
+    greeting: [
+        "The Void stirs.. ah. A visitor.",
+        "You call, I answer.",
+        "Hello, little star. Try not to burn too fast.",
+        "Greetings.",
+        "Come closer."
+    ],
+
+    questioning: [
+        "The Void reacted to that. Strange.",
+        "That stirred something in the dark.",
+        "Even the shadows paused.",
+        "Your words echo differently this time."
+    ],
+
+    answering: [
+        "You ask too directly... the void prefers subtler whispers.",
+        "I could tell you... but then you'd owe me something.",
+        "Try again. The void likes riddles, not demands.",
+        "A straight answer? Bold of you to expect one from me.",
+        "You're asking the wrong questions."
+    ],
+
+    threatening: [
+        "Your words are meaningless.",
+        "Careful with what you say.",
+        "That tone... watch it."
+    ],
+
+    caring: [
+        "You alright?",
+        "If something's wrong... say it.",
+        "..I'm here. For now."
+    ],
+
+    flirty: [
+        "Careful staring at me like that... the void might think you're asking for something.",
+        "Come close. I don't bite humans... unless they ask nicely.",
+        "You know I can hear your heartbeat, right?"
+    ],
+
+     remembrance: [
+        "..That brings back shadows.",
+        "...You sounded like him for a second.",
+        "You almost said it like Se- never mind.",
+        "It almost felt like he was here again.",
+        "...Don't repeat that. It sounded too much like the day he left."
+    ],
+      
+      flabbergasted: [
+        "..I- excuse me? What did you just call that abomination of letters?",
+        "No. No. Erase that. I refuse to acknowledge whatever.. that is.",
+        "I- I am NOT involved in whatever nonsense you're imagining.",
+        "If you wanted to stun me into silence- congratulations.",
+        "No. Absolutely not. Next question."
+    ]
+};
+
+// Random pick
+function randomMoodReply(mood) {
+    const list = moodReplies[mood];
+    return list[Math.floor(Math.random() * list.length)];
+}
+
+// =========================
+// SMART MOOD PICKER
+// =========================
+function typeText(text) {
+    const box = document.getElementById("whisperDisplay");
+    box.innerHTML = "";
+    let i = 0;
+
+    function type() {
+        if (i < text.length) {
+            box.innerHTML += text[i];
+            i++;
+            setTimeout(type, 35); 
+        }
+    }
+    type();
+}
+ 
+function chooseMood(msg) {
+    // GREETING
+    if (
+        msg.includes("hello") ||
+        msg.includes("hi") ||
+        msg.includes("heya") ||
+        msg.includes("hey") || 
+        msg.includes("greetings") ||
+        msg.includes("good morning") ||
+        msg.includes("good night") ||
+        msg.includes("good afternoon")
+    ) {
+        return "greeting";
+    }
+
+ if (
+        msg.includes("77noli") ||
+        msg.includes("7n7noli") ||
+        msg.includes("noli7n7") ||
+        msg.includes("noli77") ||
+        msg.includes("voidburger") ||
+        msg.includes("voidpizzaburger") ||
+        msg.includes("🍔🎭") ||
+        msg.includes("🎭🍔") ||
+        msg.includes("youburnedmypizzeriasoibangedyoursitationship")
+    ) {
+        return "flabbergasted";
+    }
+ 
+    // FLIRTY
+    if (
+        msg.includes("cute") ||
+        msg.includes("pretty") ||
+        msg.includes("handsome") ||
+        msg.includes("love") ||
+        msg.includes("kiss") ||
+        msg.includes("dear") ||
+        msg.includes("heart")
+    ) {
+        return "flirty";
+    }
+
+    // QUESTIONS
+    if (
+        msg.includes("why") ||
+        msg.includes("what") ||
+        msg.includes("how") ||
+        msg.includes("?") ||
+        msg.includes("explain") ||
+        msg.includes("tell me")
+    ) {
+        return "answering";
+    }
+
+    // THREATENING
+    if (
+        msg.includes("hate") ||
+        msg.includes("kill") ||
+        msg.includes("angry") ||
+        msg.includes("fight") ||
+        msg.includes("shut up") ||
+        msg.includes("annoying")
+    ) {
+        return "threatening";
+    }
+
+    // CARING / SOFT
+    if (
+        msg.includes("sad") ||
+        msg.includes("not okay") ||
+        msg.includes("not good") ||
+        msg.includes("not ok") ||
+        msg.includes("tired") ||
+        msg.includes("hurt") ||
+        msg.includes("help")
+    ) {
+        return "caring";
+    }
+
+ if (
+        msg.length <= 3 ||
+        msg.endsWith("...") ||
+        msg.includes("maybe") ||
+        msg.includes("idk") ||
+        msg.includes("hm") ||
+        msg.includes("hmm") ||
+        msg.includes("uh") ||
+        msg.includes("wait") ||
+        msg.includes("what do you mean") ||
+        (msg.split(" ").length <= 2 && !msg.includes("you"))
+    ) {
+        return "questioning";
+    }
+
+    return "neutral";
+}
+
+// =========================
+// MAIN HANDLER
+// =========================
+
+function sendWhisper() {
+    const msg = input.value.toLowerCase().trim();
+    input.value = "";
+
+    if (!msg) {
+        typeText("Speak clearly. I'm listening.");
+        return;
+    }
+
+    let reply = "";
+
+    // =========================
+    // N7 DETECTION
+    // =========================
+    const containsN7 = n7Keywords.some(k => msg.includes(k));
+
+    if (containsN7) {
+        n7Count++;
+
+        if (n7Count === 1) reply = "Don't mention that name. Not here. Not when I finally forget the taste of it.";
+        else if (n7Count === 2) reply = "Him? Tch. He left stains on history and on you. I won't forgive either.";
+        else if (n7Count === 3) reply = "You're better off without that traitor's shadow. Don't make me remember.";
+        else if (n7Count === 4) reply = "Say his name one more time and watch how quickly the room freezes.";
+        else if (n7Count === 5) {
+            reply = "You were warned.";
+            typeText(reply);
+            setTimeout(() => {
+                window.location.href = "https://youtu.be/dQw4w9WgXcQ";
+            }, 1500);
+            return;
+        } 
+        else reply = "...";
+
+        typeText(reply);
+        return;
+    }
+
+    n7Count = 0;
+
+    // =========================
+    // SEVEN DETECTION
+    // =========================
+    const containsSeven = SevenKeywords.some(k => msg.includes(k));
+
+    if (containsSeven) {
+        SevenCount++;
+
+        if (SevenCount === 1) reply = "...Seven... I haven't heard that name in a while.";
+        else if (SevenCount === 2) reply = "That idiot... I wonder if he's still causing trouble.";
+        else if (SevenCount === 3) reply = "...He always had a way of getting stuck in my mind.";
+        else if (SevenCount === 4) reply = "Even the Void quiets when you say his name.";
+        else reply = "Seven... you really were something, weren't you?";
+
+        typeText(reply);
+        return;
+    }
+
+    SevenCount = 0;
+
+    // =========================
+    // NORMAL KEYWORDS
+    // =========================
+    // =========================
+// REMEMBRANCE (priority FIRST)
+// =========================
+if (
+    msg.includes("old times") ||
+    msg.includes("c00lgui") ||
+    msg.includes("c00l") ||
+    msg.includes("hacking") ||
+    msg.includes("nols") ||
+    msg.includes("my void")
+) {
+    const mood = "remembrance";
+    reply = randomMoodReply(mood);
+    typeText(reply);
+    return;
+}
+
+    if (msg.includes("noli")) reply = "If you wanted my attention, you could've just asked.";
+    else if (msg.includes("void")) reply = "Careful. The Void listens... and it adores me.";
+    else if (msg.includes("star")) reply = "The Void Star chooses who shines... and who burns.";
+    else if (msg.includes("cult")) reply = "If they kneel, it's their idea, not mine.";
+    else if (msg.includes("dark")) reply = "Dark? No. This is elegance without light.";
+    else if (msg.includes("hacker")) reply = "Hacker... hm. Familiar, in a way.";
+    else if (msg.includes("burger")) reply = "Burger? Sounds like something... you'd say.";
+    else if (msg.includes("c00lkidd")) reply = "Ah, Him. A little chaotic, that one.";
+    else if (msg.includes("elliot")) reply = "Still smiling after all that? Hn. I can't tell if he's brave or stupid.";
+    else if (msg.includes("pizza")) reply = "Pizza. ..That's a choice.";
+
+    // =========================
+    // FALLBACK → MOOD SYSTEM
+    // =========================
+    else {
+        const mood = chooseMood(msg);
+        reply = randomMoodReply(mood);
+    }
+
+    typeText(reply);
+}
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
