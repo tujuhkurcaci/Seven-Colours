@@ -335,7 +335,17 @@ const productsData = [
       warna: ["Putih","Hitam","Coklat","Abu-Abu","Navy","Merah","Cream","Request"]
     }
   },
-  {id:4, title:"Tas Rajut Handmade", price:120000, basePrice:120000, category:"accessories", image:"rajut.jpg", desc:"Handmade creation, unique design.", badge:null,
+  {id:4, title:"Elegant Heels", price:60000, basePrice:60000, category:"shoes", image:"elegant.png", desc:"Elegant heels for special occasions.", badge:"SALE",
+    variations: {
+      ukuran: [
+        {name:"S", addPrice:0},
+        {name:"M", addPrice:10000},
+        {name:"L", addPrice:20000}
+      ],
+      warna: ["Putih","Hitam","Coklat","Abu-Abu","Navy","Merah","Cream","Request"]
+    }
+  },  
+  {id:5, title:"Tas Rajut Handmade", price:120000, basePrice:120000, category:"accessories", image:"rajut.jpg", desc:"Handmade creation, unique design.", badge:null,
     variations: {
       model: [
         {name:"Pouch", addPrice:0},
@@ -350,7 +360,7 @@ const productsData = [
       warna: ["Merah","Jingga","Kuning","Hijau","Biru","Ungu","Pink","Abu-Abu","Hitam","Putih","Custom"]
     }
   },
-  {id:5, title:"Keripik Pisang", price:12000, basePrice:12000, category:"food and beverages", image:"pisang.jpeg", desc:"Crispy banana chips.", badge:null,
+  {id:6, title:"Keripik Pisang", price:12000, basePrice:12000, category:"food and beverages", image:"pisang.jpeg", desc:"Crispy banana chips.", badge:null,
     variations: {
       ukuran: [
         {name:"Kecil (jomblo)", addPrice:0},
@@ -360,17 +370,7 @@ const productsData = [
       rasa: ["Original","Balado","Coklat","Matcha"]
     }
   },
-  {id:6, title:"Es Teh Manis", price:5000, basePrice:5000, category:"food and beverages", image:"teh.jpeg", desc:"Refreshing iced tea.", badge:null}
-  {id:7, title:"Elegant Heels", price:60000, basePrice:60000, category:"shoes", image:"elegant.png", desc:"Elegant heels for special occasions.", badge:null,
-    variations: {
-      ukuran: [
-        {name:"S", addPrice:0},
-        {name:"M", addPrice:10000},
-        {name:"L", addPrice:20000}
-      ],
-      warna: ["Putih","Hitam","Coklat","Abu-Abu","Navy","Merah","Cream","Request"]
-    }
-  } 
+  {id:7, title:"Es Teh Manis", price:5000, basePrice:5000, category:"food and beverages", image:"teh.jpeg", desc:"Refreshing iced tea.", badge:null}
 ];
 
 /* ========== STATE ========== */
@@ -699,6 +699,7 @@ document.addEventListener('keydown', (e)=>{ if(e.key==='Escape'){ document.getEl
 </script>
 </body>
 </html>
+
 
 
 
