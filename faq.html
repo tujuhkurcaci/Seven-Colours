@@ -20,14 +20,11 @@
 /* ———————————— PAGE BACKGROUND (CLEAN WHITE/LIGHT GREY) ———————————— */
 /* ---------------------------------------------------- */
 body {
-  /* Changed font for clean E-Store look */
   font-family: sans-serif; 
-  /* Removed old background, using simple light grey */
   background: #f7f7f7; 
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-
   color: #333; /* Dark text for readability */
   padding: 40px 20px;
 }
@@ -60,15 +57,6 @@ body {
   border-bottom: 3px solid #e54b64; /* Red accent line */
   padding-bottom: 10px;
   margin-bottom: 30px;
-
-  animation: none; /* Removed neon pulse animation */
-}
-
-/* ---------------------------------------------------- */
-/* ———————————— STAR DIVIDER (HIDDEN) ———————————— */
-/* ---------------------------------------------------- */
-.star-divider {
-    display: none; 
 }
 
 /* ---------------------------------------------------- */
@@ -88,7 +76,6 @@ body {
 }
 
 .question {
-    /* Made it the clickable header */
   display: block;
   padding: 15px 20px;
   font-size: 1.1em;
@@ -106,8 +93,6 @@ body {
   line-height: 1.5;
   color: #555;
   background-color: #fff;
-  
-  /* Accordion setup */
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
@@ -147,10 +132,6 @@ body {
   box-shadow: 0 6px 15px rgba(0,0,0,0.3);
 }
 
-/* Removed particle CSS as the look is now clean */
-#particles {
-    display: none; 
-}
 
 /* ---------------------------------------------------- */
 /* ———————————— RESPONSIVE MOBILE FIX ———————————— */
@@ -198,9 +179,7 @@ body {
 </style>
 </head>
 
-<body>
-<canvas id="particles"></canvas>  
-
+<body> 
 <div class="faq-container">
 
   <div class="header-title">Seven Colours - Pertanyaan Umum Belanja</div>
@@ -240,14 +219,11 @@ body {
     </div>
   </div>
 
-    <a href="index.html" class="back-btn">⇦ Lanjut Belanja</a>
+    <a href="shop.html" class="back-btn">⇦ Lanjut Belanja</a>
 
 </div>
 
 <script>
-// The canvas particle code is no longer needed for the visual style
-// BUT, the question/answer box still needs JavaScript to function as an accordion!
-
 const faqBoxes = document.querySelectorAll('.faq-box');
 
 faqBoxes.forEach(box => {
@@ -268,9 +244,8 @@ faqBoxes.forEach(box => {
         }
     });
 });
-
-// Removed the original particle JS code block below this as it's not needed for the E-Store aesthetic.
 </script>
 
 </body>
 </html>
+
