@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesanan Berhasil! 🎉</title>
+    <style>
+        /* ---------------------------------------------------- */
+        /* ———————————— BASE STYLES & ANIMATION ———————————— */
+        /* ---------------------------------------------------- */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #121212; /* Dark Mode Background */
+            color: #E0E0E0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Character/Animation Placeholder */
+        .character-animation {
+            font-size: 5em;
+            margin-bottom: 20px;
+            color: #FF2400; /* Scarlet Red Accent */
+            animation: bounce 0.8s infinite alternate; /* Simple bounce animation */
+        }
+
+        /* Keyframe for Bounce Animation */
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-15px); }
+        }
+
+        /* Message Styling */
+        h1 {
+            font-size: 2.5em;
+            color: white;
+            margin-bottom: 10px;
+            text-shadow: 0 0 5px rgba(255, 36, 0, 0.5);
+        }
+
+        p {
+            font-size: 1.1em;
+            color: #AAAAAA;
+            margin-bottom: 40px;
+        }
+
+        /* Button Styling */
+        .return-btn {
+            padding: 15px 30px;
+            background: #FF2400; /* Scarlet Red Button */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.2s;
+            box-shadow: 0 4px 10px rgba(255, 36, 0, 0.4);
+        }
+
+        .return-btn:hover {
+            background: #cc1e00; 
+            transform: translateY(-1px);
+        }
+        
+        /* Auto-redirect timer display */
+        #timer {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #FF2400;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="character-animation">
+        🥳
+    </div>
+
+    <h1>TERIMA KASIH TELAH MENGORDER!</h1>
+    <p>Pesanan Anda sedang diproses. Anda akan menerima notifikasi status pesanan melalui email.</p>
+    
+    <a href="index.html" class="return-btn">Kembali ke Beranda</a>
+
+    <div id="timer"></div>
+    
+    <script>
+        // Pilihan Anda:
+        const AUTO_REDIRECT = true; // Ganti ke false jika Anda hanya ingin tombol.
+        const REDIRECT_DELAY_SECONDS = 8;
+        const HOME_PAGE = "index.html"; 
+
+        if (AUTO_REDIRECT) {
+            let timeLeft = REDIRECT_DELAY_SECONDS;
+            const timerEl = document.getElementById('timer');
+            
+            function updateTimer() {
+                if (timeLeft > 0) {
+                    timerEl.textContent = `Mengalihkan otomatis dalam ${timeLeft} detik...`;
+                    timeLeft--;
+                    setTimeout(updateTimer, 1000);
+                } else {
+                    window.location.href = HOME_PAGE;
+                }
+            }
+            updateTimer();
+        } else {
+            document.getElementById('timer').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
