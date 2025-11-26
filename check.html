@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Checkout — Mini E-Store</title>
+    <title>Seven Colours — Checkout</title>
+
+    <link rel="icon" type="image/png" href="webicon.png" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
     
     <style>
         /* ---------------------------------------------------- */
@@ -359,11 +363,11 @@
 
             // VALIDATION
             if (!nama || !hp || !alamat) {
-                alert("do you REALLY think i know who u r. - n7");
+                alert("Isi form terlebih dahulu!");
                 return; // stop order
             }
 
-            alert("yay u spent ur money on smth 🎭🍔");
+            alert("Order berhasil!");
 
             // Clear cart
             localStorage.removeItem("mini_cart_v1");
@@ -375,4 +379,5 @@
         });
     </script>
 </body>
+
 </html>
