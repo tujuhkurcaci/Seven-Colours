@@ -1,235 +1,201 @@
-<main class="about-us-page">
-
-    <section class="studio-intro-container">
-        
-        <div class="header-branding">
-            <div class="logo-placeholder">
-                [Icon] Seven Colours
-            </div>
-            <p class="tagline">Curating the Best of Handmade & Modern Fashion</p>
-        </div>
-
-        <h1 class="main-title">Fashion Forward</h1>
-        
-        <div class="services-list-box">
-            <ul>
-                <li><i class="check-icon">✓</i> Curated Footwear Collections (Sneakers, Heels, Loafers)</li>
-                <li><i class="check-icon">✓</i> Unique Handmade Accessories (Bags, Wallets)</li>
-                <li><i class="check-icon">✓</i> Global Shipping & Easy Returns</li>
-                <li><i class="check-icon">✓</i> Secure Payment Processing</li>
-            </ul>
-        </div>
-
-        <div class="bottom-cta-area">
-            <a href="/products" class="cta-button-style">EXPLORE STYLES <span class="arrow">▶</span></a>
-            
-            <div class="location-box">
-                <i class="location-icon">📍</i>
-                <p>Main Warehouse:<br>123 Anywhere St., Any City</p>
-            </div>
-        </div>
-        
-        <div class="image-wrapper image-large">
-            <img src="path/to/large-fashion-shot.jpg" alt="Model showcasing new collection" />
-        </div>
-
-        <div class="image-wrapper image-tilted-small image-red-dress">
-            <div class="image-frame">
-                <img src="path/to/product-focus-shoes.jpg" alt="Featured product: Casual Loafers" />
-            </div>
-        </div>
-        
-        <div class="image-wrapper image-framed-bottom">
-            <img src="path/to/product-focus-bag.jpg" alt="Featured product: Handmade Rajut Bag" />
-        </div>
-
-        <div class="deco-stripe-1"></div>
-        <div class="deco-stripe-2"></div>
-        
-    </section>
-</main>
-/* --- BASE STYLES --- */
-.studio-intro-container {
-    /* Set up the main black background */
-    background-color: black;
-    color: white;
-    padding: 40px;
-    min-height: 800px; /* Ensure enough space for absolute elements */
-    position: relative; /* Essential for positioning children absolutely */
-    overflow: hidden; /* Helps contain elements that might extend past the padding */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seven Colours - About Us</title>
     
-    /* Use Grid to place main items logically */
-    display: grid;
-    /* Define grid columns for the main content areas */
-    grid-template-columns: 1fr 1fr 1fr 1fr; /* 4 conceptual columns */
-    grid-template-rows: auto auto 1fr auto; /* Rows for header, title, content, footer */
-    gap: 20px;
-}
+    <link rel="icon" type="image/png" href="webicon.png" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+    
+    <style>
+        /* [YOUR EXISTING GLOBAL STYLES (reset, body, canvas, etc.) REMAINS HERE] */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* --- GRID PLACEMENT --- */
+        /* Retaining your background and particle logic */
+        body {
+            background: url("blac.png");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: "Georgia", serif;
+            color: white;
+            /* REMOVE padding-top/bottom and text-align: center; */
+            overflow-x: hidden;
+            /* New: Ensure the body fills the viewport for the absolute layout */
+            min-height: 100vh; 
+        }
 
-.header-branding {
-    grid-column: 1 / 3; /* Spans columns 1 and 2 */
-    grid-row: 1;
-}
+        /* ----------------------------------------------- */
+        /* PASTING NEW LAYOUT CSS HERE */
+        /* ----------------------------------------------- */
 
-.main-title {
-    grid-column: 2 / 5; /* Starts in column 2, spans to the end */
-    grid-row: 2;
-    font-size: 6vw; /* Responsive font size */
-    font-weight: 800;
-    letter-spacing: -2px;
-}
+        /* --- STUDIO INTRO CONTAINER (The black area) --- */
+        .studio-intro-container {
+            /* We will use a semi-transparent black overlay instead of pure black */
+            background-color: rgba(0, 0, 0, 0.85); /* Black with 85% opacity */
+            color: white;
+            padding: 40px;
+            /* Ensure it sits above the canvases */
+            min-height: 100vh;
+            position: relative; 
+            overflow: hidden; 
+            
+            /* Use Grid to place main items logically */
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr; 
+            grid-template-rows: auto auto 1fr auto; 
+            gap: 20px;
+            
+            /* Align the entire container to the top-left */
+            margin: 0; 
+            width: 100%;
+            z-index: 5; /* Keep it above the canvas effects */
+        }
 
-.services-list-box {
-    grid-column: 3 / 5; /* Sits on the right side */
-    grid-row: 3;
-    align-self: end; /* Moves the box to the bottom of its row */
-    background-color: white;
-    color: black;
-    padding: 30px;
-    border-radius: 10px;
-    z-index: 10; /* Ensures it sits above images */
-}
+        /* [REST OF THE NEW LAYOUT CSS GOES HERE] */
+        
+        /* 1. GRID PLACEMENT */
+        .header-branding { grid-column: 1 / 3; grid-row: 1; }
+        .main-title { grid-column: 2 / 5; grid-row: 2; font-size: 6vw; font-weight: 800; letter-spacing: -2px; }
+        .services-list-box { grid-column: 3 / 5; grid-row: 3; align-self: end; background-color: white; color: black; padding: 30px; border-radius: 10px; z-index: 10; }
+        .bottom-cta-area { grid-column: 3 / 5; grid-row: 4; display: flex; align-items: center; gap: 20px; margin-top: 20px; z-index: 10; }
 
-.bottom-cta-area {
-    grid-column: 3 / 5;
-    grid-row: 4;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    margin-top: 20px;
-    z-index: 10;
-}
+        /* 2. TEXT & LIST STYLES */
+        .tagline { font-size: 0.9em; opacity: 0.7; }
+        .services-list-box ul { list-style: none; padding: 0; font-size: 1.2em; }
+        .services-list-box li { margin-bottom: 10px; }
+        .check-icon { color: #8a2be2; /* Purple checkmark */ margin-right: 10px; } 
 
-/* --- TEXT & LIST STYLES --- */
+        /* 3. BUTTON & LOCATION STYLES */
+        .cta-button-style { background-color: #8a2be2; /* Purple Button */ color: white; padding: 10px 25px; border-radius: 5px; text-decoration: none; font-weight: bold; display: flex; align-items: center; }
+        .arrow { font-size: 1.2em; margin-left: 5px; }
+        .location-box { background-color: white; color: black; padding: 10px 20px; border-radius: 5px; display: flex; align-items: center; font-size: 0.9em; }
+        .location-icon { margin-right: 10px; font-size: 1.5em; }
 
-.tagline {
-    font-size: 0.9em;
-    opacity: 0.7;
-}
+        /* 4. IMAGE STYLING (ABSOLUTE POSITIONING) */
+        .image-wrapper img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-.services-list-box ul {
-    list-style: none;
-    padding: 0;
-    font-size: 1.2em;
-}
+        /* Large Top Left Image */
+        .image-large { position: absolute; top: 40px; left: 40px; width: 300px; height: 450px; overflow: hidden; }
 
-.services-list-box li {
-    margin-bottom: 10px;
-}
+        /* Middle Tilted Image */
+        .image-tilted-small { position: absolute; top: 250px; left: 200px; width: 200px; height: 300px; z-index: 5; }
+        .image-frame { padding: 15px; background-color: white; transform: rotate(-7deg); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); }
+        
+        /* Bottom Framed Image */
+        .image-framed-bottom { position: absolute; bottom: 0px; left: 350px; width: 250px; height: 350px; padding: 20px; background-color: white; z-index: 5; }
 
-.check-icon {
-    color: green; /* Or a bright color like the red/orange from the original */
-    margin-right: 10px;
-}
+        /* 5. DECORATIVE STRIPES (ABSOLUTE) */
+        .deco-stripe-1 {
+            position: absolute; top: 220px; left: 420px; z-index: 8;
+            width: 80px; height: 80px; border: 2px solid white; border-radius: 5px;
+            /* Tilted black/white stripe */
+            background-image: repeating-linear-gradient(45deg, white, white 10px, black 10px, black 20px);
+            transform: rotate(45deg); 
+        }
+        .deco-stripe-2 {
+            position: absolute; bottom: 250px; left: 50px; opacity: 0.5;
+            width: 100px; height: 100px;
+            /* Tilted grid/square pattern */
+            background-image: repeating-linear-gradient(90deg, white, white 10px, black 10px, black 20px);
+            transform: rotate(15deg);
+        }
 
-/* --- BUTTON & LOCATION STYLES --- */
+        /* [YOUR EXISTING MOBILE MEDIA QUERY STYLES REMAINS HERE] */
+        @media (max-width: 600px) {
+            /* We need to greatly simplify the absolute positioning for small screens */
+            .studio-intro-container {
+                display: block; /* Switch to a stacked, simple flow */
+                padding: 15px;
+            }
+            .main-title {
+                font-size: 10vw;
+                margin-top: 30px;
+            }
+            .image-wrapper, .image-tilted-small, .image-framed-bottom, .deco-stripe-1, .deco-stripe-2 {
+                position: static; /* Remove absolute positioning */
+                transform: none; /* Remove tilts */
+                width: 100%;
+                height: auto;
+                margin-top: 15px;
+                padding: 0;
+            }
+            .image-frame {
+                transform: none;
+                padding: 5px;
+            }
+            .services-list-box {
+                margin-top: 20px;
+                width: 100%;
+            }
+            .bottom-cta-area {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .cta-button-style, .location-box {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
 
-.cta-button-style {
-    background-color: white;
-    color: black;
-    padding: 10px 25px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-}
+<body>
 
-.arrow {
-    font-size: 1.2em;
-    margin-left: 5px;
-}
 
-.location-box {
-    background-color: white;
-    color: black;
-    padding: 10px 20px;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    font-size: 0.9em;
-}
+<div class="studio-intro-container">
+    
+    <div class="header-branding">
+        <div class="logo-placeholder">
+            [Icon] Seven Colours
+        </div>
+        <p class="tagline">Curating the Best of Handmade & Modern Fashion</p>
+    </div>
 
-.location-icon {
-    margin-right: 10px;
-    font-size: 1.5em;
-}
+    <h1 class="main-title">Fashion Forward</h1>
+    
+    <div class="services-list-box">
+        <ul>
+            <li><i class="check-icon">✓</i> Curated Footwear Collections (Sneakers, Heels, Loafers)</li>
+            <li><i class="check-icon">✓</i> Unique Handmade Accessories (Crochet Bags)</li>
+            <li><i class="check-icon">✓</i> Global Shipping & Easy Returns</li>
+            <li><i class="check-icon">✓</i> Secure Payment Processing</li>
+        </ul>
+    </div>
 
-/* --- IMAGE STYLING (ABSOLUTE POSITIONING) --- */
+    <div class="bottom-cta-area">
+        <a href="/products" class="cta-button-style">EXPLORE STYLES <span class="arrow">▶</span></a>
+        
+        <div class="location-box">
+            <i class="location-icon">📍</i>
+            <p>Main Warehouse:<br>Faculty of Economics - Sriwijaya University</p>
+        </div>
+    </div>
+    
+    <div class="image-wrapper image-large">
+        <img src="path/to/large-fashion-shot.jpg" alt="Model showcasing new collection" />
+    </div>
 
-.image-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
+    <div class="image-wrapper image-tilted-small">
+        <div class="image-frame">
+            <img src="path/to/product-focus-shoes.jpg" alt="Featured product: Casual Loafers" />
+        </div>
+    </div>
+    
+    <div class="image-wrapper image-framed-bottom">
+        <img src="path/to/product-focus-bag.jpg" alt="Featured product: Handmade Rajut Bag" />
+    </div>
 
-/* 1. Large Top Left Image */
-.image-large {
-    position: absolute;
-    top: 40px;
-    left: 40px;
-    width: 300px;
-    height: 450px;
-    overflow: hidden;
-}
+    <div class="deco-stripe-1"></div>
+    <div class="deco-stripe-2"></div>
+    
+</div>
 
-/* 2. Middle Red Dress Image - TILTED */
-.image-tilted-small {
-    position: absolute;
-    top: 250px;
-    left: 200px;
-    width: 200px;
-    height: 300px;
-    z-index: 5;
-}
+<script>
 
-.image-frame {
-    /* The white border around the image */
-    padding: 15px;
-    background-color: white;
-    transform: rotate(-7deg); /* KEY: TILTED EFFECT */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-}
+</script>
 
-/* 3. Bottom Framed Image */
-.image-framed-bottom {
-    position: absolute;
-    bottom: 0px; /* Aligns to the bottom of the section */
-    left: 350px;
-    width: 250px;
-    height: 350px;
-    padding: 20px;
-    background-color: white; /* Creates the white background frame */
-    z-index: 5;
-}
-
-/* --- DECORATIVE STRIPES (ABSOLUTE) --- */
-
-/* Stripe 1: Near the tilted image */
-.deco-stripe-1 {
-    position: absolute;
-    width: 80px;
-    height: 80px;
-    background-image: repeating-linear-gradient(45deg, white, white 10px, black 10px, black 20px);
-    transform: rotate(45deg); /* Tilted look */
-    top: 220px;
-    left: 420px;
-    z-index: 8;
-    border: 2px solid white;
-    border-radius: 5px;
-}
-
-/* Stripe 2: Near the corner */
-.deco-stripe-2 {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    background-image: repeating-linear-gradient(90deg, white, white 10px, black 10px, black 20px);
-    bottom: 250px;
-    left: 50px;
-    transform: rotate(15deg);
-    opacity: 0.5;
-}
+</body>
+</html>
