@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Mini E-Store - Killow's Gooning Space</title>
+  <title>E-Store — Shop</title>
 
   <!-- FAVICON -->
-  <link rel="icon" type="image/png" href="malewife.png" />
+  <link rel="icon" type="image/png" href="webicon.png" />
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Mini E-Store — Variasi (Pink Soft)</title>
@@ -205,8 +205,6 @@
   <a href="aboutme.html" class="info-link">About Me</a>
   <a href="faq.html" class="info-link">FAQ</a>
   <a href="contact.html" class="info-link">Contact</a>
-  <a href="https://youtu.be/sJOrisGgzc0?si=eXVEXwFyWm3Jdrg9" class="info-link">ฅ^•ﻌ•^ฅ</a>
-  <a href="https://vt.tiktok.com/ZSfFEStgH/" class="info-link">goon corner</a>
 </aside>
 
 <!-- SIDE CART -->
@@ -239,7 +237,7 @@
 
 <main class="main">
   <div class="hero">
-    <img src="yixi.jpg" alt="Banner">
+    <img src="shop.png" alt="Banner">
     <div class="hero-text">Promo Hari Ini — Diskon Spesial</div>
 </div>
 
@@ -247,7 +245,7 @@
     <div style="flex:1">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
         <h2 style="margin:0">Etalase Produk</h2>
-        <div style="font-size:13px;color:var(--muted)">Edit lewat kode → buka file HTML</div>
+        <div style="font-size:13px;color:var(--muted)">High Quality Products</div>
       </div>
 
       <div id="productsGrid" class="products" aria-live="polite">
@@ -307,7 +305,7 @@
  - Upload HD images (1000x1000) and set image file names
 ==================================================*/
 const productsData = [
-  {id:1, title:"Sneaker Classic", price:80000, basePrice:80000, category:"shoes", image:"bald.jpg", desc:"Pls free me from this.", badge:"NEW",
+  {id:1, title:"Classic Sneaker", price:80000, basePrice:80000, category:"shoes", image:"sneaker.png", desc:"Comfortable everyday sneakers.", badge:"NEW",
     variations: {
       ukuran: [
         {name:"S", addPrice:0},
@@ -317,7 +315,7 @@ const productsData = [
       warna: ["Putih","Hitam","Coklat","Abu-Abu","Navy","Merah","Cream","Request"]
     }
   },
-  {id:2, title:"Casual Loafers", price:90000, basePrice:90000, category:"shoes", image:"letsky.jpg", desc:"Telamon hi.", badge:"NEW",
+  {id:2, title:"Casual Loafers", price:90000, basePrice:90000, category:"shoes", image:"casualloafers.png", desc:"Smart-casual loafers for work or outings.", badge:"NEW",
     variations: {
       ukuran: [
         {name:"S", addPrice:0},
@@ -327,7 +325,7 @@ const productsData = [
       warna: ["Putih","Hitam","Coklat","Abu-Abu","Navy","Merah","Cream","Request"]
     }
   },
-  {id:3, title:"Sport Runner", price:150000, basePrice:150000, category:"shoes", image:"seven.jpg", desc:"OH MY GOD HE'S HOT.", badge:"SALE",
+  {id:3, title:"Sport Runner", price:150000, basePrice:150000, category:"shoes", image:"sportrun.png", desc:"Lightweight running shoes.", badge:"SALE",
     variations: {
       ukuran: [
         {name:"S", addPrice:0},
@@ -337,7 +335,7 @@ const productsData = [
       warna: ["Putih","Hitam","Coklat","Abu-Abu","Navy","Merah","Cream","Request"]
     }
   },
-  {id:4, title:"Tas Rajut Handmade", price:120000, basePrice:120000, category:"accessories", image:"ensven.jpg", desc:"Handmade creation, unique design.", badge:null,
+  {id:4, title:"Tas Rajut Handmade", price:120000, basePrice:120000, category:"accessories", image:"rajut.jpg", desc:"Handmade creation, unique design.", badge:null,
     variations: {
       model: [
         {name:"Pouch", addPrice:0},
@@ -352,7 +350,7 @@ const productsData = [
       warna: ["Merah","Jingga","Kuning","Hijau","Biru","Ungu","Pink","Abu-Abu","Hitam","Putih","Custom"]
     }
   },
-  {id:5, title:"Keripik Pisang", price:12000, basePrice:12000, category:"food and beverages", image:"guest.jpg", desc:"Crispy banana chips.", badge:null,
+  {id:5, title:"Keripik Pisang", price:12000, basePrice:12000, category:"food and beverages", image:"pisang.jpeg", desc:"Crispy banana chips.", badge:null,
     variations: {
       ukuran: [
         {name:"Kecil (jomblo)", addPrice:0},
@@ -362,7 +360,17 @@ const productsData = [
       rasa: ["Original","Balado","Coklat","Matcha"]
     }
   },
-  {id:6, title:"Es Teh Manis", price:5000, basePrice:5000, category:"food and beverages", image:"jason.jpg", desc:"Fresh tea :D", badge:null}
+  {id:6, title:"Es Teh Manis", price:5000, basePrice:5000, category:"food and beverages", image:"teh.jpeg", desc:"Refreshing iced tea.", badge:null}
+  {id:7, title:"Elegant Heels", price:60000, basePrice:60000, category:"shoes", image:"elegant.png", desc:"Elegant heels for special occasions.", badge:null,
+    variations: {
+      ukuran: [
+        {name:"S", addPrice:0},
+        {name:"M", addPrice:10000},
+        {name:"L", addPrice:20000}
+      ],
+      warna: ["Putih","Hitam","Coklat","Abu-Abu","Navy","Merah","Cream","Request"]
+    }
+  }, 
 ];
 
 /* ========== STATE ========== */
@@ -691,6 +699,7 @@ document.addEventListener('keydown', (e)=>{ if(e.key==='Escape'){ document.getEl
 </script>
 </body>
 </html>
+
 
 
 
