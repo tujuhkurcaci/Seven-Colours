@@ -2,325 +2,284 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>FAQ — Veeronica™ Edition 🛹💖</title>
-
+<title>Seven Colours - Shopping FAQ 👠👜</title> 
 <style>
+/* ---------------------------------------------------- */
 /* ———————————— GLOBAL RESET ———————————— */
+/* ---------------------------------------------------- */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* ———————————— PAGE BACKGROUND ———————————— */
+/* ---------------------------------------------------- */
+/* ———————————— PAGE BACKGROUND (CLEAN WHITE/LIGHT GREY) ———————————— */
+/* ---------------------------------------------------- */
 body {
-  font-family: "Courier New", monospace;
-  background: url("veeronica.png");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+  /* Changed font for clean E-Store look */
+  font-family: sans-serif; 
+  /* Removed old background, using simple light grey */
+  background: #f7f7f7; 
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 
-  color: #ff66cc;
-  padding: 40px 20px;
+  color: #333; /* Dark text for readability */
+  padding: 40px 20px;
 }
 
-/* ———————————— MAIN FRAME ———————————— */
+/* ---------------------------------------------------- */
+/* ———————————— MAIN FRAME (CLEAN & SIMPLE) ———————————— */
+/* ---------------------------------------------------- */
 .faq-container {
-  max-width: 800px;
-  margin: auto;
-  padding: 25px;
-  background: rgba(0,0,0,0.65);
-  border: 3px solid #ff1ec4;
-  border-radius: 15px;
-  box-shadow: 
-      0 0 15px #ff00e6,
-      0 0 30px #ff00d4,
-      inset 0 0 20px rgba(255,0,220,0.4);
-  backdrop-filter: blur(4px);
+  max-width: 850px; /* Wider to match E-Store look */
+  margin: auto;
+  padding: 30px;
+  
+  /* Clean white background, removed blur and neon borders/shadows */
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+  backdrop-filter: none;
 }
 
+/* ---------------------------------------------------- */
 /* ———————————— HEADER ———————————— */
+/* ---------------------------------------------------- */
 .header-title {
-  font-size: 42px;
-  text-align: center;
-  font-weight: bold;
-  color: #ff4ee9;
-  text-shadow: 
-        0 0 10px #ff64f9,
-        0 0 20px #ff0df2,
-        0 0 40px #ff00d4;
+  font-size: 2.5em; /* Smaller, professional title */
+  text-align: left;
+  font-weight: bold;
+  color: #333; 
+  text-shadow: none;
+  border-bottom: 3px solid #e54b64; /* Red accent line */
+  padding-bottom: 10px;
+  margin-bottom: 30px;
 
-  animation: neonPulse 2s infinite ease-in-out;
+  animation: none; /* Removed neon pulse animation */
 }
 
-@keyframes neonPulse {
-  0% { text-shadow: 0 0 15px #ff4ee9; }
-  50% { text-shadow: 0 0 35px #ff00e0; }
-  100% { text-shadow: 0 0 15px #ff4ee9; }
-}
+/* Removed @keyframes neonPulse */
 
+
+/* ---------------------------------------------------- */
 /* ———————————— STAR DIVIDER ———————————— */
+/* ---------------------------------------------------- */
+/* Replaced with a simple horizontal rule or a gap */
 .star-divider {
-  width: 100%;
-  height: 35px;
-  margin: 25px 0;
-  background: url("star.png") repeat-x center;
-  filter: drop-shadow(0 0 6px #ff00e0);
+    display: none; /* Hide the star divider */
 }
 
-/* ———————————— Q + A BOX STYLES ———————————— */
+/* ---------------------------------------------------- */
+/* ———————————— Q + A BOX STYLES (Clean Accordion Look) ———————————— */
+/* ---------------------------------------------------- */
 .faq-box {
-  margin: 20px 0;
-  padding: 18px;
-  background: rgba(255, 20, 200, 0.1);
-  border-left: 4px solid #ff4ae0;
-  border-radius: 10px;
+  margin: 15px 0;
+  border: 1px solid #eee; /* Light border */
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.3s;
+}
 
-  box-shadow: 0 0 10px #ff3cd4;
+.faq-box:hover {
+    border-color: #e54b64; /* Highlight on hover */
 }
 
 .question {
-  font-size: 20px;
-  font-weight: bold;
-  color: #ff94ff;
-  text-shadow: 0 0 8px #ff3cd4;
+    /* Made it the clickable header */
+  display: block;
+  padding: 15px 20px;
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #333;
+  background-color: #fcfcfc;
+  cursor: pointer;
+  user-select: none;
+  text-shadow: none;
 }
 
 .answer {
-  margin-top: 8px;
-  font-size: 17px;
-  line-height: 1.4;
-  color: #ffc9ff;
+  padding: 10px 20px;
+  font-size: 0.95em;
+  line-height: 1.5;
+  color: #555;
+  background-color: #fff;
+  
+  /* Accordion setup */
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
 }
 
+/* New class for when an answer is open (controlled by JS) */
+.faq-box.active .answer {
+    max-height: 500px; /* Needs to be larger than content */
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.faq-box.active .question {
+    color: #e54b64; /* Highlight question when open */
+}
+
+/* ---------------------------------------------------- */
 /* ———————————— BUTTON ———————————— */
+/* ---------------------------------------------------- */
 .back-btn {
-  display: inline-block;
-  margin-top: 35px;
-  padding: 12px 22px;
-  border-radius: 10px;
+  display: inline-block;
+  margin-top: 40px;
+  padding: 10px 20px;
+  border-radius: 5px;
 
-  font-size: 20px;
-  text-decoration: none;
-  color: black;
-  background: #ff4ee9;
-  font-weight: bold;
+  font-size: 18px;
+  text-decoration: none;
+  color: white; /* White text */
+  background: #e54b64; /* Red button */
+  font-weight: bold;
 
-  box-shadow: 0 0 15px #ff00e0;
-  transition: 0.2s;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: 0.2s;
 }
 
 .back-btn:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 25px #ff00e0;
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
 }
 
+/* Removed particle CSS as the look is now clean */
 #particles {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0; /* stays behind */
+    display: none; 
 }
 
-.faq-container {
-  position: relative;
-  z-index: 2;
-}  
-
-  /* ———————————— RESPONSIVE MOBILE FIX ———————————— */
+/* ---------------------------------------------------- */
+/* ———————————— RESPONSIVE MOBILE FIX ———————————— */
+/* ---------------------------------------------------- */
 @media (max-width: 600px) {
 
-  body {
-    background: url("veeronica.png") no-repeat center center;
-    background-size: cover;
-    background-attachment: scroll !important;
+  body {
+    background: #f7f7f7; 
+    background-attachment: scroll !important;
+  }
 
-  .faq-container {
-    width: 92%;
-    padding: 18px 15px;
-    margin: auto;
+  .faq-container {
+    width: 100%;
+    padding: 18px 15px;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
 
-    border-radius: 18px;
-    border-width: 2px;
+  .header-title {
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: none;
+  }
 
-    background: rgba(0,0,0,0.55);
-    box-shadow:
-      0 0 10px #ff00e6,
-      inset 0 0 10px rgba(255,0,220,0.25);
-  }
+  .faq-box {
+    margin: 10px 0;
+    border-radius: 8px;
+  }
 
-  .header-title {
-    font-size: 26px;
-    text-shadow: none;
-    animation: none;
-    margin-bottom: 10px;
-  }
+  .question {
+    font-size: 1em;
+  }
 
-  .star-divider {
-    height: 20px;
-    margin: 15px 0;
-    background-size: contain;
-  }
+  .answer {
+    font-size: 0.9em;
+  }
 
-  .faq-box {
-    padding: 14px 12px;
-    margin: 12px 0;
-
-    background: rgba(255,20,200,0.08);
-    border-radius: 12px;
-    border-left-width: 3px;
-
-    box-shadow: none;
-  }
-
-  .question {
-    font-size: 16px;
-    text-shadow: none;
-  }
-
-  .answer {
-    font-size: 14px;
-    line-height: 1.35;
-  }
-
-  .back-btn {
-    margin-top: 20px;
-    font-size: 16px;
-    padding: 10px 15px;
-
-    border-radius: 8px;
-    box-shadow: 0 0 10px #ff00e0;
-  }
+  .back-btn {
+    margin-top: 30px;
+    font-size: 16px;
+  }
 }
 </style>
 </head>
 
 <body>
-<canvas id="particles"></canvas>  
+<canvas id="particles"></canvas>  
 
 <div class="faq-container">
 
-  <div class="header-title">F A Q — Veeronica™ Zone 💖🛹</div>
+  <div class="header-title">Seven Colours - Shopping FAQ</div>
 
-  <div class="star-divider"></div>
+      <div class="faq-box">
+    <div class="question">1. When will my shoes/bags arrive? (Shipping Time)</div>
+    <div class="answer">
+      All orders are processed within **1-2 business days**. Domestic delivery usually takes **3-7 days**, and international delivery can take **10-25 days**. You will receive tracking information via email once your order ships.
+    </div>
+  </div>
 
-  <!-- FAQ 1 -->
-  <div class="faq-box">
-    <div class="question">“w-whaT iS tHis sItE aBouT aGaIn?? o_o”</div>
-    <div class="answer">
-      “Oooh!! ThIs iS mY cuTe-cHaOtiC-lil sh0p spaCe!! ^q^  
-      u cAn bUy stuFf hErE aNd hOpeFuLLy n0t aCcIdEnTaLLy  
-      suMmon a dEm0n (again). Hehe~”
-    </div>
-  </div>
+    <div class="faq-box">
+    <div class="question">2. What is your return or exchange policy?</div>
+    <div class="answer">
+      We accept returns within **30 days** of delivery for unworn shoes and undamaged items. **Please note: Handmade crochet bags are final sale** unless they are faulty or arrive damaged.
+    </div>
+  </div>
 
-  <!-- FAQ 2 -->
-  <div class="faq-box">
-    <div class="question">“h0w dO i puRchAsE st0oofff?? :0”</div>
-    <div class="answer">
-      “eAsy!! jUsT cLicK iT, sLaP tHe vAriAnt bUtToN,  
-      aNd tHe *big pink BUY thingy* will scream ‘yessss takE mY s0uL!!’  
-      >:3c”
-    </div>
-  </div>
+    <div class="faq-box">
+    <div class="question">3. How do I know which shoe size to order?</div>
+    <div class="answer">
+      We use standard **EU sizing**. We recommend checking the **Size Chart** available on every product page. If you are between sizes, sizing up is generally recommended for comfort!
+    </div>
+  </div>
 
-  <!-- FAQ 3 -->
-  <div class="faq-box">
-    <div class="question">“whY iS tHe wEbSiTe sO piNk aNd bLaCk— aRe wE iN aN eMo rAvE??”</div>
-    <div class="answer">
-      “Y E S. (￣^￣)ゞ  
-      iTs VeErOnIcA-c0r3, resPeCt thE aEsThEtiC >w<”
-    </div>
-  </div>
+    <div class="faq-box">
+    <div class="question">4. How should I clean and care for my handmade crochet bag?</div>
+    <div class="answer">
+      To maintain the shape and color of your bag, please **spot clean only** with cold water and mild soap. Do not put it in a washing machine or dryer. Always lay flat to air dry.
+    </div>
+  </div>
 
-  <!-- FAQ 4 -->
-  <div class="faq-box">
-    <div class="question">“caN i rEtUrN iF i atE tHe iTeM TwT”</div>
-    <div class="answer">
-      “uhhhh…..  
-      h- hOw— wHy— nEvErMiNd… ( •_• )  
-      plz stop eating the packaging tho Q_Q”
-    </div>
-  </div>
+    <div class="faq-box">
+    <div class="question">5. What payment methods are accepted?</div>
+    <div class="answer">
+      We accept all major credit cards (Visa, Mastercard) and PayPal for secure processing. Local bank transfer options may be available at checkout.
+    </div>
+  </div>
 
-  <!-- FAQ 5 -->
-  <div class="faq-box">
-    <div class="question">“wiLl tHeRe bE a diScOuNt iF i bUy a lOT??? ;3”</div>
-    <div class="answer">
-      “maAaaYbEEE…  
-      iF u aSk nIcEly (✧ω✧)”
-    </div>
-  </div>
-
-  <div class="star-divider"></div>
-
-  <a href="shop.html" class="back-btn">⇦ return 2 home</a>
+    <a href="index.html" class="back-btn">⇦ Continue Shopping</a>
 
 </div>
 
 <script>
+// The canvas particle code is no longer needed for the visual style
+// BUT, the question/answer box still needs JavaScript to function as an accordion!
+
+const faqBoxes = document.querySelectorAll('.faq-box');
+
+faqBoxes.forEach(box => {
+    const question = box.querySelector('.question');
+    
+    question.addEventListener('click', () => {
+        // Check if the clicked box is currently active (open)
+        const wasActive = box.classList.contains('active');
+        
+        // 1. Close ALL currently open boxes
+        faqBoxes.forEach(i => {
+            i.classList.remove('active');
+        });
+
+        // 2. Open the clicked box, but only if it was closed before
+        if (!wasActive) {
+            box.classList.add('active');
+        }
+    });
+});
+
+// Since the canvas is hidden/removed, the particle JS is not necessary to run.
+// You can remove or comment out the original canvas JS below this line:
+
+/*
 const canvas = document.getElementById("particles");
 const ctx = canvas.getContext("2d");
+// ... and so on for all the original particle code ...
+*/
 
-function resize() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-resize();
-window.addEventListener("resize", resize);
-
-// Particle colors — Veeronica aesthetic
-const colors = [
-  "rgba(255,0,220,0.6)",   // neon pink
-  "rgba(180,80,255,0.5)",  // purple glow
-  "rgba(255,170,255,0.4)"  // soft pastel pink
-];
-
-const shapes = ["★", "✦", "♡", "•"]; // cute + subtle
-
-let particles = [];
-
-for (let i = 0; i < 45; i++) {
-  particles.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    size: Math.random() * 2 + 1,
-    speedX: (Math.random() - 0.5) * 0.3,
-    speedY: (Math.random() - 0.5) * 0.3,
-    color: colors[Math.floor(Math.random() * colors.length)],
-    shape: shapes[Math.floor(Math.random() * shapes.length)]
-  });
-}
-
-function animate() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  particles.forEach(p => {
-    ctx.fillStyle = p.color;
-    ctx.font = `${p.size * 4}px monospace`;
-    ctx.fillText(p.shape, p.x, p.y);
-
-    p.x += p.speedX;
-    p.y += p.speedY;
-
-    // wrap around screen edges
-    if (p.x > canvas.width) p.x = 0;
-    if (p.x < 0) p.x = canvas.width;
-    if (p.y > canvas.height) p.y = 0;
-    if (p.y < 0) p.y = canvas.height;
-  });
-
-  requestAnimationFrame(animate);
-}
-
-animate();
 </script>
 
 </body>
 </html>
-
-
-
