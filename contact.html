@@ -19,41 +19,96 @@
 
 body {
     font-family: sans-serif;
-    background: #f7f7f7; /* Light grey background */
+    background: #f0f3f2; /* Netral, Mirip feel PayJoy */
     color: #333;
     min-height: 100vh;
-    display: flex; /* Centering content vertically */
+    display: flex; 
+    flex-direction: column; /* Mengubah arah untuk menumpuk elemen di tengah */
     justify-content: center;
     align-items: center;
     padding: 20px;
+    position: relative;
+    overflow-x: hidden;
 }
 
 /* ---------------------------------------------------- */
-/* ———————————— MAIN BUTTON TO OPEN MODAL ———————————— */
+/* ———————————— MAIN BUTTON TO OPEN MODAL (SCARLET RED) ———————————— */
 /* ---------------------------------------------------- */
 .open-modal-btn {
     padding: 15px 30px;
-    background: #ff69b4; /* Pink button */
+    background: #FF2400; /* SCARLET RED */
     color: white;
     border: none;
     border-radius: 8px;
     font-size: 1.2em;
     font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(255, 105, 180, 0.4);
+    box-shadow: 0 4px 10px rgba(255, 36, 0, 0.4);
     transition: all 0.3s ease;
-    text-decoration: none; /* Make sure it doesn't look like a link */
+    text-decoration: none;
     text-align: center;
+    margin-bottom: 30px; /* Jarak antara tombol utama dan tombol sosmed */
 }
 
 .open-modal-btn:hover {
-    background: #e65a9f; /* Darker pink on hover */
+    background: #cc1e00; /* Darker Scarlet Red on hover */
     transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(255, 105, 180, 0.6);
+    box-shadow: 0 6px 15px rgba(255, 36, 0, 0.6);
 }
 
 /* ---------------------------------------------------- */
-/* ———————————— MODAL OVERLAY & BOX ———————————— */
+/* ———————————— DIRECT CONTACT BUTTONS (ON MAIN PAGE) ———————————— */
+/* ---------------------------------------------------- */
+.main-page-social-wrapper {
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+}
+
+.main-page-social-wrapper p {
+    font-weight: bold;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+.direct-contact-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: 600;
+    text-decoration: none;
+    color: white;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.contact-button i { 
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+/* Warna Sosmed */
+.whatsapp-btn { background-color: #25D366; }
+.whatsapp-btn:hover { background-color: #1DA851; transform: translateY(-2px); }
+
+.instagram-btn { background-color: #E4405F; }
+.instagram-btn:hover { background-color: #C13584; transform: translateY(-2px); }
+
+.tiktok-btn { background-color: #000000; }
+.tiktok-btn:hover { background-color: #333333; transform: translateY(-2px); }
+
+
+/* ---------------------------------------------------- */
+/* ———————————— MODAL OVERLAY & BOX (Scarlet Red Accents) ———————————— */
 /* ---------------------------------------------------- */
 .modal-overlay {
     position: fixed;
@@ -61,13 +116,13 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6); /* Semi-transparent black overlay */
+    background: rgba(0, 0, 0, 0.6); 
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* Ensure it's on top of everything */
-    opacity: 0; /* Hidden by default */
-    visibility: hidden; /* Hidden by default */
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
@@ -82,9 +137,9 @@ body {
     border-radius: 12px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
     width: 90%;
-    max-width: 450px; /* Max width like the example */
+    max-width: 450px; 
     position: relative;
-    transform: translateY(-20px); /* Initial subtle animation */
+    transform: translateY(-20px);
     transition: transform 0.3s ease;
 }
 
@@ -105,7 +160,7 @@ body {
 }
 
 .close-btn:hover {
-    color: #ff69b4; /* Pink on hover */
+    color: #FF2400; /* Scarlet Red on hover */
 }
 
 .contact-modal h2 {
@@ -113,77 +168,57 @@ body {
     color: #333;
     margin-bottom: 25px;
     text-align: center;
-    border-bottom: 2px solid #ff69b4; /* Pink accent line */
+    border-bottom: 2px solid #FF2400; /* Scarlet Red accent line */
     padding-bottom: 10px;
 }
 
 /* ---------------------------------------------------- */
-/* ———————————— DIRECT CONTACT BUTTONS ———————————— */
+/* ———————————— FORM STYLING (Inside Modal) ———————————— */
 /* ---------------------------------------------------- */
-.direct-contact-buttons {
-    display: flex;
-    flex-direction: column; /* Stack buttons vertically */
-    gap: 15px; /* Spacing between buttons */
+.form-group {
+    margin-bottom: 20px;
 }
 
-.contact-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 15px 20px;
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #FF2400; /* Scarlet Red highlight on focus */
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 36, 0, 0.5);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.submit-modal-btn { 
+    display: block;
+    width: 100%;
+    padding: 15px 25px;
+    background: #FF2400; /* Scarlet Red */
+    color: white;
+    border: none;
     border-radius: 8px;
     font-size: 1.1em;
-    font-weight: 600;
-    text-decoration: none;
-    color: white;
+    font-weight: bold;
+    cursor: pointer;
     transition: background 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(255, 36, 0, 0.4);
+    margin-top: 25px;
 }
-
-.contact-button i { /* For Font Awesome icons */
-    margin-right: 10px;
-    font-size: 1.3em;
-}
-
-.whatsapp-btn {
-    background-color: #25D366; /* WhatsApp Green */
-}
-.whatsapp-btn:hover {
-    background-color: #1DA851;
+.submit-modal-btn:hover {
+    background: #cc1e00;
     transform: translateY(-2px);
-}
-
-.instagram-btn {
-    background-color: #E4405F; /* Instagram Red/Pink */
-}
-.instagram-btn:hover {
-    background-color: #C13584;
-    transform: translateY(-2px);
-}
-
-.tiktok-btn {
-    background-color: #000000; /* TikTok Black */
-}
-.tiktok-btn:hover {
-    background-color: #333333;
-    transform: translateY(-2px);
-}
-
-/* ---------------------------------------------------- */
-/* ———————————— RESPONSIVE ———————————— */
-/* ---------------------------------------------------- */
-@media (max-width: 500px) {
-    .contact-modal {
-        padding: 20px;
-    }
-    .contact-modal h2 {
-        font-size: 1.5em;
-        margin-bottom: 20px;
-    }
-    .contact-button {
-        font-size: 1em;
-        padding: 12px 15px;
-    }
 }
 </style>
 </head>
@@ -191,15 +226,31 @@ body {
 
 <button class="open-modal-btn">Hubungi Kami</button>
 
+<div class="main-page-social-wrapper">
+    <p>— Pilihan Lain —</p>
+    <div class="direct-contact-buttons">
+        
+        <a href="https://wa.me/6281234567890" target="_blank" class="contact-button whatsapp-btn">
+            <i class="fab fa-whatsapp"></i> Chat via WhatsApp
+        </a>
+        
+        <a href="https://instagram.com/koko.miaww" target="_blank" class="contact-button instagram-btn">
+            <i class="fab fa-instagram"></i> Kunjungi Instagram Kami
+        </a>
+        
+        <a href="https://www.tiktok.com/@dazahhh_?_r=1&_t=ZS-91jDmn5YsNA" target="_blank" class="contact-button tiktok-btn">
+            <i class="fab fa-tiktok"></i> Ikuti Kami di TikTok
+        </a>
+        
+    </div>
+</div>
+
 <div class="modal-overlay">
     <div class="contact-modal">
-        <button class="close-btn">&times;</button> <h2>Hubungi Seven Colours</h2>
+        <button class="close-btn">&times;</button> 
+        <h2>Kirim Pesan</h2>
 
-     <form action="https://formspree.io/f/xxxxxxxx" method="POST" class="contact-form-section">
-            <p style="text-align: center; margin-bottom: 15px; font-size: 0.9em; color: #555;">
-                Atau kirimkan pesan langsung kepada kami:
-            </p>
-            
+        <form action="https://formspree.io/f/xxxxxxxx" method="POST">
             <div class="form-group">
                 <input type="text" id="name" name="Nama" placeholder="Nama Lengkap" required>
             </div>
@@ -209,31 +260,11 @@ body {
             </div>
             
             <div class="form-group">
-                <textarea id="message" name="Pesan" placeholder="Pesan Anda (misalnya: Pertanyaan Pengembalian, Permintaan Kustom)" required></textarea>
+                <textarea id="message" name="Pesan" placeholder="Pesan Anda" required></textarea>
             </div>
 
-            <button type="submit" class="submit-btn" style="width: 100%; background: #ff69b4;">Kirim Pesan</button>
+            <button type="submit" class="submit-modal-btn">Kirim Sekarang</button>
         </form>
-        
-        <p style="text-align: center; margin: 25px 0 15px 0; font-weight: bold; color: #777;">
-            — Pilihan Lain —
-        </p>
-     
-        <div class="direct-contact-buttons">
-            
-            <a href="https://wa.me/6281234567890" target="_blank" class="contact-button whatsapp-btn">
-                <i class="fab fa-whatsapp"></i> Chat via WhatsApp
-            </a>
-            
-            <a href="https://instagram.com/koko.miaww" target="_blank" class="contact-button instagram-btn">
-                <i class="fab fa-instagram"></i> Kunjungi Instagram Kami
-            </a>
-            
-            <a href="https://www.tiktok.com/@dazahhh_?_r=1&_t=ZS-91jDmn5YsNA" target="_blank" class="contact-button tiktok-btn">
-                <i class="fab fa-tiktok"></i> Ikuti Kami di TikTok
-            </a>
-            
-        </div>
     </div>
 </div>
 
@@ -278,4 +309,3 @@ body {
 
 </body>
 </html>
-
