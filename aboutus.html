@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Dear Nightshade 💜</title>
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background: url("purple.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: "Georgia", serif;
+    color: white;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+/* ✨ Sparkle Rain Canvas (original) */
+#sparkleCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* ✨ Floating Particles (NEW) */
+#particleCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* PAGE CONTENT */
+.wrapper {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    z-index: 5;
+    position: relative;
+}
+
+.pfp {
+    width: 240px;
+    height: 240px;
+    border-radius: 6px;
+    object-fit: cover;
+    border: 3px solid rgba(255,255,255,0.8);
+    box-shadow: 0 0 25px #c38bff;
+}
+
+.name {
+    font-size: 36px;
+    font-weight: bold;
+    margin-top: 15px;
+    text-shadow: 0 0 12px #e5c5ff, 0 0 20px #c06bff;
+    font-family: "Times New Roman", serif;
+}
+
+.box {
+    margin: 20px auto 0;
+    width: 85%;
+    max-height: 250px;
+    overflow-y: auto;
+    padding: 20px;
+    border: 2px solid rgba(255,255,255,0.7);
+    background: rgba(0,0,0,0.45);
+    backdrop-filter: blur(2px);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(180,110,255,0.7);
+    z-index: 5;
+    position: relative;
+}
+
+.box::-webkit-scrollbar {
+    width: 8px;
+}
+.box::-webkit-scrollbar-thumb {
+    background: #bb77ff;
+    border-radius: 5px;
+}
+
+a.back {
+    margin-top: 25px;
+    display: inline-block;
+    color: #d8b9ff;
+    font-size: 20px;
+    text-decoration: none;
+    text-shadow: 0 0 10px #cc87ff;
+    z-index: 5;
+    position: relative;
+}
+a.back:hover {
+    opacity: .7;
+}
+
+    /* ⭐⭐ MOBILE VERSION (MATCHING HOMEPAGE) ⭐⭐ */
+    @media (max-width: 600px) {
+        body {
+            background: url("purpleph.png") no-repeat center center;
+            background-size: cover;
+            background-attachment: scroll !important;
+        }
+
+        .wrapper {
+            margin-top: 90px;
+            width: 88%;
+            padding: 18px;
+        }
+
+        h1 {
+            font-size: 26px;
+        }
+
+        .box {
+            max-height: 390px;
+        }
+
+        .box p {
+            font-size: 16px;
+        }
+
+        .back-btn {
+            font-size: 17px;
+        }
+    }
+</style>
+</head>
+
+<body>
+<canvas id="sparkleCanvas"></canvas>      <!-- raining glitter -->
+<canvas id="particleCanvas"></canvas>     <!-- floating particles -->
+
+<div class="wrapper">
+    <img src="azurewrath.png" class="pfp" alt="Azure Wrath">
+
+    <div class="name">Azure Wrath</div>
+
+    <div class="box">
+        <p>
+            “I forgave you long before I stopped hurting.” 💜 <br><br>
+            Killow/Seven <br><br>
+            “Just a creature with deadlines, fried chicken cravings,
+            2% social battery, 120% chaos, and a certified menace™
+            energy powered entirely by recreational procrastination.””
+        </p>
+    </div>
+
+    <a href="index.html" class="back">⇦ return to home</a>
+</div>
+    
+<script>
+const canvas = document.getElementById("sparkleCanvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = innerWidth;
+canvas.height = innerHeight;
+
+addEventListener("resize", () => {
+  canvas.width = innerWidth;
+  canvas.height = innerHeight;
+});
+
+/* ------------------------------
+   PARTICLE ARRAYS
+--------------------------------*/
+const glitterRain = [];     // falling glitter
+const floatParticles = [];  // floating dreamy particles
+
+/* ------------------------------
+   CREATE FALLING GLITTER
+--------------------------------*/
+function createGlitter() {
+  glitterRain.push({
+    x: Math.random() * canvas.width,
+    y: -10,
+    size: Math.random() * 2 + 1,
+    speed: Math.random() * 1 + 0.6,
+    opacity: Math.random() * 0.5 + 0.3
+  });
+}
+
+/* ------------------------------
+   CREATE FLOATING PARTICLES
+--------------------------------*/
+function createFloatParticle() {
+  floatParticles.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    size: Math.random() * 4 + 2,
+    speedX: Math.random() * 0.4 - 0.2,
+    speedY: Math.random() * 0.3 - 0.15,
+    opacity: Math.random() * 0.25 + 0.15
+  });
+}
+
+/* Generate initial batch so screen isn’t empty */
+for (let i = 0; i < 80; i++) createFloatParticle();
+
+/* ------------------------------
+   DRAW EVERYTHING
+--------------------------------*/
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  /* --- Falling Glitter --- */
+  glitterRain.forEach((g, i) => {
+    ctx.fillStyle = `rgba(200,120,255,${g.opacity})`;
+    ctx.beginPath();
+    ctx.arc(g.x, g.y, g.size, 0, Math.PI * 2);
+    ctx.fill();
+
+    g.y += g.speed;
+    g.opacity -= 0.002;
+
+    if (g.opacity <= 0 || g.y > canvas.height) glitterRain.splice(i, 1);
+  });
+
+  /* --- Floating Particles --- */
+  floatParticles.forEach((p, i) => {
+    ctx.fillStyle = `rgba(220,160,255,${p.opacity})`;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    ctx.fill();
+
+    p.x += p.speedX;
+    p.y += p.speedY;
+
+    // wrap around edges to keep infinite float
+    if (p.x < -20) p.x = canvas.width + 20;
+    if (p.x > canvas.width + 20) p.x = -20;
+    if (p.y < -20) p.y = canvas.height + 20;
+    if (p.y > canvas.height + 20) p.y = -20;
+  });
+}
+
+/* ------------------------------
+   TIMERS
+--------------------------------*/
+setInterval(createGlitter, 80); // rain speed
+
+/* ------------------------------
+   LOOP
+--------------------------------*/
+function animate() {
+  draw();
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+</body>
+</html>
+
+
