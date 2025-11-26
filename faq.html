@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Seven Colours - Shopping FAQ 👠👜</title> 
-    <link rel="icon" type="image/png" href="webicon.png" />
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Seven Colours - FAQ Belanja 👠👜</title>
+<link rel="icon" type="image/png" href="webicon.png" />
+
 <style>
 /* ---------------------------------------------------- */
 /* ———————————— GLOBAL RESET ———————————— */
@@ -21,9 +21,9 @@
 /* ---------------------------------------------------- */
 body {
   /* Changed font for clean E-Store look */
-  font-family: sans-serif; 
+  font-family: sans-serif; 
   /* Removed old background, using simple light grey */
-  background: #f7f7f7; 
+  background: #f7f7f7; 
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -39,12 +39,12 @@ body {
   max-width: 850px; /* Wider to match E-Store look */
   margin: auto;
   padding: 30px;
-  
+  
   /* Clean white background, removed blur and neon borders/shadows */
   background: white;
   border: 1px solid #ddd;
   border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
   backdrop-filter: none;
 }
 
@@ -55,7 +55,7 @@ body {
   font-size: 2.5em; /* Smaller, professional title */
   text-align: left;
   font-weight: bold;
-  color: #333; 
+  color: #333; 
   text-shadow: none;
   border-bottom: 3px solid #e54b64; /* Red accent line */
   padding-bottom: 10px;
@@ -64,15 +64,11 @@ body {
   animation: none; /* Removed neon pulse animation */
 }
 
-/* Removed @keyframes neonPulse */
-
-
 /* ---------------------------------------------------- */
-/* ———————————— STAR DIVIDER ———————————— */
+/* ———————————— STAR DIVIDER (HIDDEN) ———————————— */
 /* ---------------------------------------------------- */
-/* Replaced with a simple horizontal rule or a gap */
 .star-divider {
-    display: none; /* Hide the star divider */
+    display: none; 
 }
 
 /* ---------------------------------------------------- */
@@ -88,11 +84,11 @@ body {
 }
 
 .faq-box:hover {
-    border-color: #e54b64; /* Highlight on hover */
+    border-color: #e54b64; /* Highlight on hover */
 }
 
 .question {
-    /* Made it the clickable header */
+    /* Made it the clickable header */
   display: block;
   padding: 15px 20px;
   font-size: 1.1em;
@@ -110,7 +106,7 @@ body {
   line-height: 1.5;
   color: #555;
   background-color: #fff;
-  
+  
   /* Accordion setup */
   max-height: 0;
   overflow: hidden;
@@ -119,12 +115,12 @@ body {
 
 /* New class for when an answer is open (controlled by JS) */
 .faq-box.active .answer {
-    max-height: 500px; /* Needs to be larger than content */
-    padding-top: 10px;
-    padding-bottom: 10px;
+    max-height: 500px; /* Needs to be larger than content */
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 .faq-box.active .question {
-    color: #e54b64; /* Highlight question when open */
+    color: #e54b64; /* Highlight question when open */
 }
 
 /* ---------------------------------------------------- */
@@ -153,7 +149,7 @@ body {
 
 /* Removed particle CSS as the look is now clean */
 #particles {
-    display: none; 
+    display: none; 
 }
 
 /* ---------------------------------------------------- */
@@ -162,7 +158,7 @@ body {
 @media (max-width: 600px) {
 
   body {
-    background: #f7f7f7; 
+    background: #f7f7f7; 
     background-attachment: scroll !important;
   }
 
@@ -207,44 +203,44 @@ body {
 
 <div class="faq-container">
 
-  <div class="header-title">Seven Colours - Shopping FAQ</div>
+  <div class="header-title">Seven Colours - Pertanyaan Umum Belanja</div>
 
-      <div class="faq-box">
-    <div class="question">1. When will my shoes/bags arrive? (Shipping Time)</div>
+    <div class="faq-box">
+    <div class="question">1. Kapan sepatu/tas pesanan saya akan tiba? (Waktu Pengiriman)</div>
     <div class="answer">
-      All orders are processed within **1-2 business days**. Domestic delivery usually takes **3-7 days**, and international delivery can take **10-25 days**. You will receive tracking information via email once your order ships.
+      Semua pesanan diproses dalam **1-2 hari kerja**. Pengiriman domestik biasanya memakan waktu **3-7 hari**, dan pengiriman internasional bisa memakan waktu **10-25 hari**. Anda akan menerima informasi pelacakan melalui email setelah pesanan dikirimkan.
     </div>
   </div>
 
     <div class="faq-box">
-    <div class="question">2. What is your return or exchange policy?</div>
+    <div class="question">2. Apa kebijakan pengembalian atau penukaran barang Anda?</div>
     <div class="answer">
-      We accept returns within **30 days** of delivery for unworn shoes and undamaged items. **Please note: Handmade crochet bags are final sale** unless they are faulty or arrive damaged.
+      Kami menerima pengembalian dalam waktu **30 hari** sejak tanggal penerimaan untuk sepatu yang belum pernah dipakai dan barang yang tidak rusak. **Perhatian: Tas rajut handmade adalah penjualan final** kecuali jika rusak atau cacat saat tiba.
     </div>
   </div>
 
     <div class="faq-box">
-    <div class="question">3. How do I know which shoe size to order?</div>
+    <div class="question">3. Bagaimana cara menentukan ukuran sepatu yang tepat untuk dipesan?</div>
     <div class="answer">
-      We use standard **EU sizing**. We recommend checking the **Size Chart** available on every product page. If you are between sizes, sizing up is generally recommended for comfort!
+      Kami menggunakan standar **ukuran EU**. Kami sarankan untuk memeriksa **Tabel Ukuran** yang tersedia di setiap halaman produk. Jika ukuran Anda di antara dua nomor, disarankan untuk memilih ukuran yang lebih besar untuk kenyamanan optimal!
     </div>
   </div>
 
     <div class="faq-box">
-    <div class="question">4. How should I clean and care for my handmade crochet bag?</div>
+    <div class="question">4. Bagaimana cara membersihkan dan merawat tas rajut handmade saya?</div>
     <div class="answer">
-      To maintain the shape and color of your bag, please **spot clean only** with cold water and mild soap. Do not put it in a washing machine or dryer. Always lay flat to air dry.
+      Untuk menjaga bentuk dan warna tas Anda, harap lakukan **pembersihan noda saja (spot clean)** dengan air dingin dan sabun lembut. Jangan dicuci dengan mesin atau dikeringkan dengan mesin pengering. Selalu keringkan dengan cara diletakkan datar di udara terbuka agar bentuknya tetap terjaga.
     </div>
   </div>
 
     <div class="faq-box">
-    <div class="question">5. What payment methods are accepted?</div>
+    <div class="question">5. Metode pembayaran apa saja yang diterima?</div>
     <div class="answer">
-      We accept all major credit cards (Visa, Mastercard) and PayPal for secure processing. Local bank transfer options may be available at checkout.
+      Kami menerima metode pembayaran COD, QRIS, dan transfer bank.
     </div>
   </div>
 
-    <a href="index.html" class="back-btn">⇦ Continue Shopping</a>
+    <a href="index.html" class="back-btn">⇦ Lanjut Belanja</a>
 
 </div>
 
@@ -255,35 +251,26 @@ body {
 const faqBoxes = document.querySelectorAll('.faq-box');
 
 faqBoxes.forEach(box => {
-    const question = box.querySelector('.question');
-    
-    question.addEventListener('click', () => {
-        // Check if the clicked box is currently active (open)
-        const wasActive = box.classList.contains('active');
-        
-        // 1. Close ALL currently open boxes
-        faqBoxes.forEach(i => {
-            i.classList.remove('active');
-        });
+    const question = box.querySelector('.question');
+    
+    question.addEventListener('click', () => {
+        // Check if the clicked box is currently active (open)
+        const wasActive = box.classList.contains('active');
+        
+        // 1. Close ALL currently open boxes
+        faqBoxes.forEach(i => {
+            i.classList.remove('active');
+        });
 
-        // 2. Open the clicked box, but only if it was closed before
-        if (!wasActive) {
-            box.classList.add('active');
-        }
-    });
+        // 2. Open the clicked box, but only if it was closed before
+        if (!wasActive) {
+            box.classList.add('active');
+        }
+    });
 });
 
-// Since the canvas is hidden/removed, the particle JS is not necessary to run.
-// You can remove or comment out the original canvas JS below this line:
-
-/*
-const canvas = document.getElementById("particles");
-const ctx = canvas.getContext("2d");
-// ... and so on for all the original particle code ...
-*/
-
+// Removed the original particle JS code block below this as it's not needed for the E-Store aesthetic.
 </script>
 
 </body>
 </html>
-
