@@ -477,7 +477,7 @@ function handleAddClick(id){
       variant:{}
     });
     saveCart();
-    showToast(`${p.title} added to ur list (${qty})`);
+    showToast(`${p.title} ditambahkan ke keranjang anda! (${qty})`);
   }
 }
 
@@ -650,8 +650,8 @@ function changeQty(index, val){
   const q = Math.max(1, parseInt(val)||1);
   if(cart[index]){ cart[index].qty = q; saveCart(); }
 }
-function removeItem(index){ cart.splice(index,1); saveCart(); showToast('i hacked ur item its no longer exist xp'); }
-function clearCart(){ if(!confirm('clear ur cart?')) return; cart = []; saveCart(); showToast('ok done go shop'); }
+function removeItem(index){ cart.splice(index,1); saveCart(); showToast('Produk dihapus'); }
+function clearCart(){ if(!confirm('Kosongkan keranjangmu?')) return; cart = []; saveCart(); showToast('Keranjang dikosongkan'); }
 
 function openSideCart(){ document.getElementById('sideCart').classList.add('open'); document.getElementById('sideCart').setAttribute('aria-hidden','false'); updateCartUI(); }
 function closeSideCart(){ document.getElementById('sideCart').classList.remove('open'); document.getElementById('sideCart').setAttribute('aria-hidden','true'); }
@@ -680,7 +680,7 @@ function goCheckout() {
   const cart = JSON.parse(localStorage.getItem("mini_cart_v1")) || [];
 
   if (!cart || cart.length === 0) {
-    alert("what r u buying, choose some items xp");
+    alert("Keranjang kosong!");
     return;
   }
   
@@ -699,6 +699,7 @@ document.addEventListener('keydown', (e)=>{ if(e.key==='Escape'){ document.getEl
 </script>
 </body>
 </html>
+
 
 
 
