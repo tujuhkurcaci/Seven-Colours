@@ -4,6 +4,9 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>E-Store — Home</title>
+  <link rel="icon" type="image/png" href="webicon.png" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 
 <!-- Optional: Google font (works if online) -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -167,7 +170,12 @@
 <!-- PROMO STRIP -->
 <section class="promo">
   <div class="promo-card">
-    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=800&auto=format&fit=crop" alt="promo">
+    <iframe src="https://player.vimeo.com/video/528312291"
+          width="100%" height="500"
+          frameborder="0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen>
+  </iframe>
     <div class="meta">
       <h3>Flash Store — Big Sale</h3>
       <p>Seasonal 50% off selected items. Limited time only — shop the bestsellers now.</p>
@@ -190,41 +198,41 @@
   <div class="products" id="productsGrid">
     <!-- Example product cards (replace src & text with your real products or let your shop.html handle listing) -->
     <article class="card">
-      <img src="https://images.unsplash.com/photo-1528701800489-5647f7b50c21?q=80&w=1200&auto=format&fit=crop" alt="product">
+      <img src="sneaker.png" alt="product">
       <div class="title">Classic Sneaker</div>
       <div class="desc">Comfortable everyday sneakers.</div>
       <div class="row">
-        <div class="price">$29.99</div>
+        <div class="price">Rp 80.000</div>
         <button class="addbtn" onclick="location.href='shop.html'">Add</button>
       </div>
     </article>
 
     <article class="card">
-      <img src="https://images.unsplash.com/photo-1600180758890-9b3f1b35b3e1?q=80&w=1200&auto=format&fit=crop" alt="product">
+      <img src="casualloafers.png" alt="product">
       <div class="title">Casual Loafers</div>
       <div class="desc">Smart-casual loafers for outings.</div>
       <div class="row">
-        <div class="price">$39.99</div>
+        <div class="price">Rp 90.000</div>
         <button class="addbtn" onclick="location.href='shop.html'">Add</button>
       </div>
     </article>
 
     <article class="card">
-      <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1200&auto=format&fit=crop" alt="product">
+      <img src="sportrun.png" alt="product">
       <div class="title">Sport Runner</div>
       <div class="desc">Lightweight running shoes.</div>
       <div class="row">
-        <div class="price">$19.99</div>
+        <div class="price">Rp 150.000</div>
         <button class="addbtn" onclick="location.href='shop.html'">Add</button>
       </div>
     </article>
 
     <article class="card">
-      <img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?q=80&w=1200&auto=format&fit=crop" alt="product">
+      <img src="elegant.png" alt="product">
       <div class="title">Elegant Heels</div>
       <div class="desc">Elegant heels for special occasions.</div>
       <div class="row">
-        <div class="price">$49.99</div>
+        <div class="price">Rp 60.000</div>
         <button class="addbtn" onclick="location.href='shop.html'">Add</button>
       </div>
     </article>
@@ -235,25 +243,11 @@
   © <strong>E-Store</strong> • Made with ❤️
 </footer>
 
-<!-- Gremlin Easter egg (kept) -->
+
 <script>
-  const gremlinVideos = [
-    "https://youtu.be/olVgIySUf-k?si=8L0czcElgZhDfNHR",
-    "https://youtu.be/qQlVtAiFARI?si=2sl-9DLQMkpCmYhI",
-    "https://youtu.be/rqXlYY88t6w?si=xQVW2q-WpOshpGeH",
-    "https://youtu.be/v35t8qKREdQ?si=gly-NnEs9kNc9fDP",
-    "https://youtu.be/5FY0kpC-150?si=ak_9pCB0XQBDM6iW",
-    "https://youtu.be/0iVlSNpq8i8?si=6FFfN77JF2f3HqTv",
-    "https://www.youtube.com/watch?v=ZuifkacZ0TA",
-    "https://youtu.be/G_JfKOjwzwo?si=RC0OnDUCAKMPR04o",
-    "https://youtu.be/XfTWgMgknpY?si=PnvkQF9OJMCOzFMA",
-    "https://youtu.be/D_qiWvjJ3kk?si=lGWVq15CFXuQCmzB"
-  ];
-  function launchGremlinVideo(){
-    const i = Math.floor(Math.random()*gremlinVideos.length);
-    window.open(gremlinVideos[i], "_blank");
-  }
+  
 </script>
 
 </body>
 </html>
+
