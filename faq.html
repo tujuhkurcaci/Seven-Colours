@@ -11,215 +11,213 @@
 /* ———————————— GLOBAL RESET ———————————— */
 /* ---------------------------------------------------- */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* ---------------------------------------------------- */
 /* ———————————— PAGE BACKGROUND (CLEAN WHITE/LIGHT GREY) ———————————— */
 /* ---------------------------------------------------- */
 body {
-  font-family: sans-serif; 
-  background: #f7f7f7; 
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  color: #333; /* Dark text for readability */
-  padding: 40px 20px;
+  font-family: sans-serif;
+  background: #f7f7f7;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #333;
+  padding: 40px 20px;
 }
 
 /* ---------------------------------------------------- */
 /* ———————————— MAIN FRAME (CLEAN & SIMPLE) ———————————— */
 /* ---------------------------------------------------- */
 .faq-container {
-  max-width: 850px; /* Wider to match E-Store look */
-  margin: auto;
-  padding: 30px;
-  
-  /* Clean white background, removed blur and neon borders/shadows */
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
-  backdrop-filter: none;
+  max-width: 850px;
+  margin: auto;
+  padding: 30px;
+
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  backdrop-filter: none;
 }
 
 /* ---------------------------------------------------- */
 /* ———————————— HEADER ———————————— */
 /* ---------------------------------------------------- */
 .header-title {
-  font-size: 2.5em; /* Smaller, professional title */
-  text-align: left;
-  font-weight: bold;
-  color: #333; 
-  text-shadow: none;
-  border-bottom: 3px solid #e54b64; /* Red accent line */
-  padding-bottom: 10px;
-  margin-bottom: 30px;
+  font-size: 2.5em;
+  text-align: left;
+  font-weight: bold;
+  color: #333;
+  text-shadow: none;
+  border-bottom: 3px solid #e54b64;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
 }
 
 /* ---------------------------------------------------- */
 /* ———————————— Q + A BOX STYLES (Clean Accordion Look) ———————————— */
 /* ---------------------------------------------------- */
 .faq-box {
-  margin: 15px 0;
-  border: 1px solid #eee; /* Light border */
-  border-radius: 6px;
-  overflow: hidden;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  transition: border-color 0.3s;
+  margin: 15px 0;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.3s;
 }
 
 .faq-box:hover {
-    border-color: #e54b64; /* Highlight on hover */
+  border-color: #e54b64;
 }
 
 .question {
-  display: block;
-  padding: 15px 20px;
-  font-size: 1.1em;
-  font-weight: 600;
-  color: #333;
-  background-color: #fcfcfc;
-  cursor: pointer;
-  user-select: none;
-  text-shadow: none;
+  display: block;
+  padding: 15px 20px;
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #333;
+  background-color: #fcfcfc;
+  cursor: pointer;
+  user-select: none;
+  text-shadow: none;
 }
 
 .answer {
-  padding: 10px 20px;
-  font-size: 0.95em;
-  line-height: 1.5;
-  color: #555;
-  background-color: #fff;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+  padding: 10px 20px;
+  font-size: 0.95em;
+  line-height: 1.5;
+  color: #555;
+  background-color: #fff;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
 }
 
-/* New class for when an answer is open (controlled by JS) */
 .faq-box.active .answer {
-    max-height: 500px; /* Needs to be larger than content */
-    padding-top: 10px;
-    padding-bottom: 10px;
+  max-height: 500px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
+
 .faq-box.active .question {
-    color: #e54b64; /* Highlight question when open */
+  color: #e54b64;
 }
 
 /* ---------------------------------------------------- */
 /* ———————————— BUTTON ———————————— */
 /* ---------------------------------------------------- */
 .back-btn {
-  display: inline-block;
-  margin-top: 40px;
-  padding: 10px 20px;
-  border-radius: 5px;
+  display: inline-block;
+  margin-top: 40px;
+  padding: 10px 20px;
+  border-radius: 5px;
 
-  font-size: 18px;
-  text-decoration: none;
-  color: white; /* White text */
-  background: #e54b64; /* Red button */
-  font-weight: bold;
+  font-size: 18px;
+  text-decoration: none;
+  color: white;
+  background: #e54b64;
+  font-weight: bold;
 
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  transition: 0.2s;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: 0.2s;
 }
 
 .back-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
 }
-
 
 /* ---------------------------------------------------- */
 /* ———————————— RESPONSIVE MOBILE FIX ———————————— */
 /* ---------------------------------------------------- */
 @media (max-width: 600px) {
 
-  body {
-    background: #f7f7f7; 
-    background-attachment: scroll !important;
-  }
+  body {
+    background: #f7f7f7;
+    background-attachment: scroll !important;
+  }
 
-  .faq-container {
-    width: 100%;
-    padding: 18px 15px;
-    margin: 0;
-    border-radius: 0;
-    box-shadow: none;
-  }
+  .faq-container {
+    width: 100%;
+    padding: 18px 15px;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
 
-  .header-title {
-    font-size: 2em;
-    text-align: center;
-    margin-bottom: 20px;
-    border-bottom: none;
-  }
+  .header-title {
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: none;
+  }
 
-  .faq-box {
-    margin: 10px 0;
-    border-radius: 8px;
-  }
+  .faq-box {
+    margin: 10px 0;
+    border-radius: 8px;
+  }
 
-  .question {
-    font-size: 1em;
-  }
+  .question {
+    font-size: 1em;
+  }
 
-  .answer {
-    font-size: 0.9em;
-  }
+  .answer {
+    font-size: 0.9em;
+  }
 
-  .back-btn {
-    margin-top: 30px;
-    font-size: 16px;
-  }
+  .back-btn {
+    margin-top: 30px;
+    font-size: 16px;
+  }
 }
 </style>
 </head>
 
-<body> 
+<body>
 <div class="faq-container">
 
-  <div class="header-title">Seven Colours - Pertanyaan Umum Belanja</div>
+  <div class="header-title">Seven Colours - Pertanyaan Umum Belanja</div>
 
-    <div class="faq-box">
-    <div class="question">1. Kapan sepatu/tas pesanan saya akan tiba? (Waktu Pengiriman)</div>
-    <div class="answer">
-      Semua pesanan diproses dalam **1-2 hari kerja**. Pengiriman domestik biasanya memakan waktu **3-7 hari**, dan pengiriman internasional bisa memakan waktu **10-25 hari**. Anda akan menerima informasi pelacakan melalui email setelah pesanan dikirimkan.
-    </div>
-  </div>
+  <div class="faq-box">
+    <div class="question">1. Kapan sepatu/tas pesanan saya akan tiba? (Waktu Pengiriman)</div>
+    <div class="answer">
+      Semua pesanan diproses dalam **1-2 hari kerja**. Pengiriman domestik biasanya memakan waktu **3-7 hari**, dan pengiriman internasional bisa memakan waktu **10-25 hari**. Anda akan menerima informasi pelacakan melalui email setelah pesanan dikirimkan.
+    </div>
+  </div>
 
-    <div class="faq-box">
-    <div class="question">2. Apa kebijakan pengembalian atau penukaran barang Anda?</div>
-    <div class="answer">
-      Kami menerima pengembalian dalam waktu **30 hari** sejak tanggal penerimaan untuk sepatu yang belum pernah dipakai dan barang yang tidak rusak. **Perhatian: Tas rajut handmade adalah penjualan final** kecuali jika rusak atau cacat saat tiba.
-    </div>
-  </div>
+  <div class="faq-box">
+    <div class="question">2. Apa kebijakan pengembalian atau penukaran barang Anda?</div>
+    <div class="answer">
+      Kami menerima pengembalian dalam waktu **30 hari** sejak tanggal penerimaan untuk sepatu yang belum pernah dipakai dan barang yang tidak rusak. **Perhatian: Tas rajut handmade adalah penjualan final** kecuali jika rusak atau cacat saat tiba.
+    </div>
+  </div>
 
-    <div class="faq-box">
-    <div class="question">3. Bagaimana cara menentukan ukuran sepatu yang tepat untuk dipesan?</div>
-    <div class="answer">
-      Kami menggunakan standar **ukuran EU**. Kami sarankan untuk memeriksa **Tabel Ukuran** yang tersedia di setiap halaman produk. Jika ukuran Anda di antara dua nomor, disarankan untuk memilih ukuran yang lebih besar untuk kenyamanan optimal!
-    </div>
-  </div>
+  <div class="faq-box">
+    <div class="question">3. Bagaimana cara menentukan ukuran sepatu yang tepat untuk dipesan?</div>
+    <div class="answer">
+      Kami menggunakan standar **ukuran EU**. Kami sarankan untuk memeriksa **Tabel Ukuran** yang tersedia di setiap halaman produk. Jika ukuran Anda di antara dua nomor, disarankan untuk memilih ukuran yang lebih besar untuk kenyamanan optimal!
+    </div>
+  </div>
 
-    <div class="faq-box">
-    <div class="question">4. Bagaimana cara membersihkan dan merawat tas rajut handmade saya?</div>
-    <div class="answer">
-      Untuk menjaga bentuk dan warna tas Anda, harap lakukan **pembersihan noda saja (spot clean)** dengan air dingin dan sabun lembut. Jangan dicuci dengan mesin atau dikeringkan dengan mesin pengering. Selalu keringkan dengan cara diletakkan datar di udara terbuka agar bentuknya tetap terjaga.
-    </div>
-  </div>
+  <div class="faq-box">
+    <div class="question">4. Bagaimana cara membersihkan dan merawat tas rajut handmade saya?</div>
+    <div class="answer">
+      Untuk menjaga bentuk dan warna tas Anda, harap lakukan **pembersihan noda saja (spot clean)** dengan air dingin dan sabun lembut. Jangan dicuci dengan mesin atau dikeringkan dengan mesin pengering. Selalu keringkan dengan cara diletakkan datar di udara terbuka agar bentuknya tetap terjaga.
+    </div>
+  </div>
 
-    <div class="faq-box">
-    <div class="question">5. Metode pembayaran apa saja yang diterima?</div>
-    <div class="answer">
-      Kami menerima metode pembayaran COD, QRIS, dan transfer bank.
-    </div>
-  </div>
+  <div class="faq-box">
+    <div class="question">5. Metode pembayaran apa saja yang diterima?</div>
+    <div class="answer">
+      Kami menerima metode pembayaran COD, QRIS, dan transfer bank.
+    </div>
+  </div>
 
-    <a href="shop.html" class="back-btn">⇦ Lanjut Belanja</a>
+  <a href="shop.html" class="back-btn">⇦ Lanjut Belanja</a>
 
 </div>
 
@@ -227,25 +225,21 @@ body {
 const faqBoxes = document.querySelectorAll('.faq-box');
 
 faqBoxes.forEach(box => {
-    const question = box.querySelector('.question');
-    
-    question.addEventListener('click', () => {
-        // Check if the clicked box is currently active (open)
-        const wasActive = box.classList.contains('active');
-        
-        // 1. Close ALL currently open boxes
-        faqBoxes.forEach(i => {
-            i.classList.remove('active');
-        });
+  const question = box.querySelector('.question');
+  
+  question.addEventListener('click', () => {
+    const wasActive = box.classList.contains('active');
 
-        // 2. Open the clicked box, but only if it was closed before
-        if (!wasActive) {
-            box.classList.add('active');
-        }
-    });
+    faqBoxes.forEach(i => {
+      i.classList.remove('active');
+    });
+
+    if (!wasActive) {
+      box.classList.add('active');
+    }
+  });
 });
 </script>
 
 </body>
 </html>
-
