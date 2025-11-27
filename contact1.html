@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seven Colours - Kontak Kami</title>
+
+    <link rel="icon" type="image/png" href="webicon.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* Define the new accent color */
+        :root {
+            --scarlet-red: #ff2400; /* A vibrant scarlet red */
+            --light-gray: #e9e9e9;
+            --dark-bg: #1a1a1a;
+            --text-color: #000;
+            --text-color-dark: #fff;
+        }
+
+        /* ---------------------------------------------------- */
+        /* ———————————— BASE STYLES & LAYOUT ———————————— */
+        /* ---------------------------------------------------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+            background-color: #f2f2f2;
+        }
+        
+        /* Main Container - The Two-Column Layout */
+        .contact-page-container {
+            display: flex;
+            min-height: 100vh; /* Full screen height */
+            max-width: 1400px; /* Limit the overall width */
+            margin: 0 auto; /* Center the container */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ---------------------------------------------------- */
+        /* ———————————— LEFT SECTION (LIGHT) ———————————— */
+        /* ---------------------------------------------------- */
+        .left-section {
+            flex: 1;
+            background-color: var(--light-gray); /* Light Gray Background */
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .logo-header .logo {
+            font-weight: bold;
+            font-size: 1.5em;
+            color: var(--text-color);
+        }
+
+        .contact-info {
+            margin-top: 100px;
+            flex-grow: 1;
+        }
+
+        .contact-info .title {
+            font-size: 4em;
+            font-weight: 900;
+            color: var(--text-color);
+            margin-bottom: 30px;
+        }
+        
+        /* Information Box (White Overlay) */
+        .message-box {
+            background-color: white;
+            padding: 40px;
+            position: relative;
+            z-index: 10;
+            width: 85%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .message-box p {
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .call-to-action {
+            background-color: #f4f4f4;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .call-to-action i {
+            color: var(--scarlet-red); 
+            font-size: 1.2em;
+        }
+
+        /* Social Media Icons */
+        .social-media {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #ccc;
+        }
+
+        .social-media .slogan {
+            font-weight: bold;
+            margin: 5px 0 15px 0;
+        }
+
+        .social-icons a {
+            color: var(--text-color);
+            font-size: 1.5em;
+            margin-right: 15px;
+            transition: color 0.2s;
+        }
+
+        .social-icons a:hover {
+            color: var(--scarlet-red);
+        }
+
+        .footer-left {
+            margin-top: 20px;
+            font-size: 0.8em;
+            color: #666;
+        }
+
+        /* ---------------------------------------------------- */
+        /* ———————————— RIGHT SECTION (DARK/FORM) ———————————— */
+        /* ---------------------------------------------------- */
+        .right-section {
+            flex: 1;
+            background-color: var(--dark-bg); /* Dark Gray/Black Background */
+            color: var(--text-color-dark);
+            padding: 50px;
+            position: relative;
+            /* Placeholder for the background image/person's face */
+        }
+
+        /* Navigation */
+        .main-nav {
+            text-align: right;
+            margin-bottom: 50px;
+        }
+
+        .main-nav a {
+            color: var(--text-color-dark);
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 500;
+            padding-bottom: 5px;
+            transition: color 0.2s;
+        }
+
+        .main-nav a:hover,
+        .main-nav .contact-btn {
+            border-bottom: 2px solid var(--scarlet-red);
+        }
+
+        /* Form Styling */
+        .form-container h2 {
+            font-size: 2em;
+            margin-bottom: 30px;
+            font-weight: normal;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+            color: #ccc;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            background-color: transparent;
+            border: 1px solid #555;
+            color: var(--text-color-dark);
+            font-size: 1em;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--scarlet-red);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #777;
+        }
+
+        /* Newsletter Checkbox (Placeholder, remove if not needed) */
+        .newsletter-checkbox {
+            margin-top: 30px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .newsletter-checkbox input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            appearance: none;
+            background-color: transparent;
+            border: 2px solid #555;
+            cursor: pointer;
+            position: relative;
+            top: -2px;
+        }
+
+        .newsletter-checkbox input[type="checkbox"]:checked {
+            background-color: var(--scarlet-red);
+            border-color: var(--scarlet-red);
+        }
+
+        .newsletter-checkbox label {
+            color: var(--text-color-dark);
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            background-color: var(--scarlet-red);
+            color: var(--text-color-dark);
+            border: none;
+            padding: 15px 30px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            width: auto;
+        }
+
+        .submit-btn:hover {
+            background-color: #c91c00; /* Darker Scarlet Red on hover */
+        }
+
+        /* Footer in Right Section */
+        .footer-right {
+            position: absolute;
+            bottom: 50px;
+            left: 50px;
+            right: 50px;
+            display: flex;
+            justify-content: space-around;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        .footer-right a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: color 0.2s;
+        }
+
+        .footer-right a:hover,
+        .footer-right .contact-btn {
+            color: var(--scarlet-red);
+        }
+
+        /* Media Query for smaller screens (e.g., mobile) to stack the columns */
+        @media (max-width: 992px) {
+            .contact-page-container {
+                flex-direction: column;
+            }
+
+            .left-section, .right-section {
+                padding: 30px;
+            }
+
+            .contact-info .title {
+                font-size: 3em;
+                margin-top: 50px;
+            }
+
+            .message-box {
+                width: 100%; /* Full width on mobile */
+            }
+
+            .main-nav {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+            
+            .footer-right {
+                position: static;
+                margin-top: 30px;
+                border-top: none;
+                justify-content: space-between;
+                flex-wrap: wrap;
+            }
+
+            .footer-right a {
+                margin: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="contact-page-container">
+        
+        <div class="left-section">
+            <header class="logo-header">
+                <div class="logo">Seven Colours</div>
+            </header>
+
+            <div class="contact-info">
+                <h1 class="title">Kontak Kami.</h1>
+                
+                <div class="message-box">
+                    <p>Kami akan membaca semua pesan satu per satu dan memastikan tidak ada yang terlewat. Kirimkan pesan atau pertanyaan Anda, dan kami akan membalasnya.</p>
+                    <div class="call-to-action">
+                        <i class="fas fa-envelope"></i>
+                        <p>Kami hanya memerlukan **Nama** dan **Alamat Email** Anda untuk membalas, tidak ada spam atau buletin yang akan dikirim.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="social-media">
+                <p>Kunjungi Kami di Media Sosial</p>
+                <p class="slogan">Temukan Inspirasi dan Informasi Terbaru</p>
+                <div class="social-icons">
+                    <a href="https://wa.me/6281234567890" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://instagram.com/koko.miaww" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@dazahhh_?_r=1&_t=ZS-91jDmn5YsNA" target="_blank"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+
+            <footer class="footer-left">
+                &copy; 2023 Seven Colours. Hak Cipta Dilindungi.
+            </footer>
+        </div>
+
+        <div class="right-section">
+            <nav class="main-nav">
+                <a href="#">Home</a>
+                <a href="#">Blog</a>
+                <a href="#">About Me</a>
+                <a href="#" class="contact-btn">Kontak Kami</a>
+            </nav>
+
+            <div class="form-container">
+                <h2>Kirim Pesan</h2>
+                <form action="https://formspree.io/f/xxxxxxxx" method="POST">
+                    <div class="form-group">
+                        <label for="name">Nama Lengkap</label>
+                        <input type="text" id="name" name="Nama" placeholder="Nama Lengkap" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Alamat Email</label>
+                        <input type="email" id="email" name="_replyto" placeholder="Alamat Email Anda" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subjek Pesan</label>
+                        <input type="text" id="subject" name="Subjek">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Pesan Anda</label>
+                        <textarea id="message" name="Pesan" required></textarea>
+                    </div>
+
+                    <div class="newsletter-checkbox">
+                        <input type="checkbox" id="newsletter" name="newsletter">
+                        <label for="newsletter">Daftar Buletin Kami</label>
+                    </div>
+
+                    <button type="submit" class="submit-btn">KIRIM SEKARANG</button>
+                </form>
+            </div>
+            
+            <footer class="footer-right">
+                <a href="#">Home</a>
+                <a href="#">Blog</a>
+                <a href="#">About Me</a>
+                <a href="#" class="contact-btn">Kontak Kami</a>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>
