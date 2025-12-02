@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seven Colours — Checkout</title>
+
+    <link rel="icon" type="image/png" href="webicon.png" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+    
+    <style>
+        /* ---------------------------------------------------- */
+        /* ———————————— GENERAL & DARK THEME ———————————— */
+        /* ---------------------------------------------------- */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #121212; /* Darker background, less harsh than pure black */
+            color: #E0E0E0; /* Light grey text */
+            margin: 0;
+            padding: 30px 20px;
+            line-height: 1.6;
+        }
+
+        /* CONTAINER & GRID */
+        .checkout-container {
+            max-width: 950px;
+            margin: auto;
+        }
+
+        .checkout-grid {
+            display: grid;
+            grid-template-columns: 1fr 0.8fr;
+            gap: 30px; /* Increased gap for cleaner look */
+        }
+
+        /* ---------------------------------------------------- */
+        /* ———————————— TYPOGRAPHY & TITLES ———————————— */
+        /* ---------------------------------------------------- */
+        h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 30px;
+            text-shadow: 0 0 5px rgba(255, 36, 0, 0.5); /* Soft red glow (Scarlet Red) */
+        }
+
+        h2 {
+            font-size: 1.4em;
+            color: #FF2400; /* Scarlet Red Section Title */
+            border-bottom: 2px solid #333; /* Subtle divider */
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        /* ---------------------------------------------------- */
+        /* ———————————— CARD BOX (Main Content Area) ———————————— */
+        /* ---------------------------------------------------- */
+        .card {
+            background: #1E1E1E; /* Dark background for the card */
+            border: 1px solid #333; /* Subtle border */
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        /* ---------------------------------------------------- */
+        /* ———————————— INPUTS & LABELS ———————————— */
+        /* ---------------------------------------------------- */
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 5px 0 20px;
+            border-radius: 6px;
+
+            background: #252525; /* Dark input background */
+            border: 1px solid #444; /* Dark border */
+            color: #E0E0E0;
+
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            box-shadow: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #FF2400; /* Scarlet Red focus glow effect */
+            outline: none;
+            box-shadow: 0 0 8px rgba(255, 36, 0, 0.5);
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        label {
+            display: block;
+            font-size: 0.9em;
+            color: #AAAAAA;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        /* ---------------------------------------------------- */
+        /* ———————————— PAYMENT OPTIONS (RADIO) ———————————— */
+        /* ---------------------------------------------------- */
+        .card label:has(input[type="radio"]) {
+            display: flex; /* Ensure radio button is aligned */
+            align-items: center;
+            padding: 10px 0;
+            margin-bottom: 5px;
+            border-bottom: 1px dashed #333; /* Subtle separation */
+            color: #E0E0E0;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        input[type="radio"] {
+            width: auto;
+            margin-right: 10px;
+            accent-color: #FF2400; /* Scarlet Red accent */
+        }
+
+
+        /* ---------------------------------------------------- */
+        /* ———————————— ORDER SUMMARY ———————————— */
+        /* ---------------------------------------------------- */
+
+        #orderItems {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 8px 0;
+            font-size: 0.95em;
+            color: #AAAAAA;
+        }
+
+        .summary {
+            padding: 15px 0;
+        }
+
+        .summary p {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 1em;
+        }
+
+        .summary p:last-child {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #FF2400; /* Scarlet Red Total */
+            border-top: 2px solid #FF2400;
+            padding-top: 10px;
+            margin-top: 15px;
+        }
+
+        /* ---------------------------------------------------- */
+        /* ———————————— BUTTON ———————————— */
+        /* ---------------------------------------------------- */
+        #btnPlaceOrder {
+            width: 100%;
+            padding: 15px; /* Bigger button */
+
+            background: #FF2400; /* Solid Scarlet Red */
+            border: none; /* No border needed */
+            border-radius: 8px;
+            color: white;
+
+            cursor: pointer;
+            font-size: 17px;
+            font-weight: 700;
+
+            box-shadow: 0 4px 10px rgba(255, 36, 0, 0.4);
+            transition: 0.2s ease;
+            margin-top: 15px;
+        }
+
+        #btnPlaceOrder:hover {
+            background: #cc1e00; /* Darker Red on hover */
+            box-shadow: 0 6px 15px rgba(255, 36, 0, 0.6);
+            transform: translateY(-1px);
+        }
+
+        /* ---------------------------------------------------- */
+        /* ———————————— MOBILE ———————————— */
+        /* ---------------------------------------------------- */
+        @media (max-width: 768px) {
+            .checkout-grid {
+                grid-template-columns: 1fr;
+            }
+            .checkout-container {
+                padding: 15px;
+            }
+            h1 {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="checkout-container">
+
+        <h1>Checkout</h1>
+
+        <div class="checkout-grid">
+
+            <div class="left-column">
+
+                <div class="card">
+                    <h2>Alamat Pengiriman</h2>
+                    <label>Nama Penerima</label>
+                    <input type="text" id="nama" placeholder="Winter" required>
+
+                    <label>Nomor HP</label>
+                    <input type="tel" id="hp" placeholder="08xxxxxxxx" required>
+
+                    <label>Alamat Lengkap</label>
+                    <textarea id="alamat" placeholder="Jalan Mawar No. 22, RT 03 RW 01" required></textarea>
+                </div>
+
+                <div class="card">
+                    <h2>Metode Pembayaran</h2>
+
+                    <label><input type="radio" name="pay" value="COD" checked> Bayar di Tempat (COD)</label>
+                    <label><input type="radio" name="pay" value="QRIS"> QRIS</label>
+                    <label><input type="radio" name="pay" value="Transfer"> Transfer Bank</label>
+                </div>
+
+            </div>
+
+            <div class="right-column">
+
+                <div class="card">
+                    <h2>Ringkasan Pesanan</h2>
+                    <div id="orderItems"></div>
+
+                    <div class="summary">
+                        <p>Subtotal: <span id="subtotalValue"></span></p>
+                        <p>Ongkir: <span id="ongkirValue"></span></p>
+                        <p>Total Akhir: <span id="totalAkhir"></span></p>
+                    </div>
+
+                    <button id="btnPlaceOrder">Buat Pesanan</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- GET CART FROM LOCALSTORAGE ---
+        let cart = JSON.parse(localStorage.getItem('mini_cart_v1')) || [];
+
+        // --- STORE LOCATION (UNSRI FE INDRALAYA) ---
+        const STORE_LAT = -3.220300;
+        const STORE_LNG = 104.650900;
+
+        // --- Dummy geocoder: ubah alamat jadi koordinat fake ---
+        function dummyGeocode(address) {
+            let hash = 0;
+            for (let i = 0; i < address.length; i++) {
+                hash += address.charCodeAt(i);
+            }
+
+            // Buat koordinat random tapi stabil
+            return {
+                lat: -3.22 + ((hash % 50) / 1000),   // range: -3.22 s/d -3.17
+                lng: 104.65 + ((hash % 50) / 1000)   // range: 104.65 s/d 104.70
+            };
+        }
+
+        // --- Haversine Formula (hitungan jarak km) ---
+        function getDistanceKm(lat1, lng1, lat2, lng2) {
+            const R = 6371;
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLng = (lng2 - lng1) * Math.PI / 180;
+
+            const a =
+                Math.sin(dLat / 2) ** 2 +
+                Math.cos(lat1 * Math.PI / 180) *
+                Math.cos(lat2 * Math.PI / 180) *
+                Math.sin(dLng / 2) ** 2;
+
+            return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        }
+
+        // DOM elements
+        const orderItemsEl = document.getElementById("orderItems");
+        const subtotalEl = document.getElementById("subtotalValue");
+        const totalAkhirEl = document.getElementById("totalAkhir");
+
+        let subtotal = 0;
+
+        // --- RENDER ITEMS ---
+        cart.forEach(item => {
+            // Make sure price is a clean number
+            let price = parseInt(item.price.toString().replace(/\D/g, ""));
+
+            const div = document.createElement("div");
+            div.classList.add("order-item");
+            div.innerHTML = `
+    <span>${item.title} × ${item.qty}</span>
+    <span>Rp ${price * item.qty}</span>
+  `;
+            orderItemsEl.appendChild(div);
+
+            subtotal += price * item.qty;
+        });
+
+        subtotalEl.textContent = `Rp ${subtotal.toLocaleString("id-ID")}`;
+
+        function calculateOngkir() {
+            const address = document.getElementById("alamat").value.trim();
+            if (!address) return 5000; // default 5k
+
+            const userLoc = dummyGeocode(address);
+            const distance = getDistanceKm(STORE_LAT, STORE_LNG, userLoc.lat, userLoc.lng);
+
+            // Dummy formula: 5000 + 5000 per 100 km
+            const extra = Math.floor(distance / 100) * 5000;
+
+            return 5000 + extra;
+        }
+
+        function updateTotal() {
+            // --- Recalculate subtotal every time ---
+            let subtotal = 0;
+            cart.forEach(item => {
+                let price = parseInt(item.price.toString().replace(/\D/g, ""));
+                subtotal += price * item.qty;
+            });
+
+            // --- Calculate ongkir based on latest subtotal ---
+            let ongkir = calculateOngkir();
+
+            document.getElementById("subtotalValue").textContent =
+                "Rp " + subtotal.toLocaleString("id-ID");
+
+            document.getElementById("ongkirValue").textContent =
+                "Rp " + ongkir.toLocaleString("id-ID");
+
+            document.getElementById("totalAkhir").textContent =
+                "Rp " + (subtotal + ongkir).toLocaleString("id-ID");
+        }
+
+        updateTotal()
+
+        document.getElementById("alamat").addEventListener("input", updateTotal);
+        // --- ORDER BUTTON ---
+        document.getElementById("btnPlaceOrder").addEventListener("click", () => {
+            const nama = document.getElementById("nama").value.trim();
+            const hp = document.getElementById("hp").value.trim();
+            const alamat = document.getElementById("alamat").value.trim();
+
+            // VALIDATION
+            if (!nama || !hp || !alamat) {
+                alert("Isi form terlebih dahulu!");
+                return; // stop order
+            }
+
+            alert("Order berhasil!");
+
+            // Clear cart
+            localStorage.removeItem("mini_cart_v1");
+
+            // Delay redirect slightly so clearing finishes
+            setTimeout(() => {
+                window.location.href = "success.html";
+            }, 200);
+        });
+    </script>
+</body>
+
+</html>
