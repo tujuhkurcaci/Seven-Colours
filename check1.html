@@ -256,19 +256,111 @@
         </div>
     </div>
 
-   <script type="module">
-  // 1. Import Firebase App & Firestore
-  import { initializeApp } 
-    from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+    <script>
+        // --- GET CART FROM LOCALSTORAGE ---
+        let cart = JSON.parse(localStorage.getItem('mini_cart_v1')) || [];
 
-  import { 
-    getFirestore, 
-    collection, 
-    addDoc, 
-    serverTimestamp 
-  } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
+        // --- STORE LOCATION (UNSRI FE INDRALAYA) ---
+        const STORE_LAT = -3.220300;
+        const STORE_LNG = 104.650900;
 
-  // 2. Firebase Config kamu
+        // --- Dummy geocoder: ubah alamat jadi koordinat fake ---
+        function dummyGeocode(address) {
+            let hash = 0;
+            for (let i = 0; i < address.length; i++) {
+                hash += address.charCodeAt(i);
+            }
+
+            // Buat koordinat random tapi stabil
+            return {
+                lat: -3.22 + ((hash % 50) / 1000),   // range: -3.22 s/d -3.17
+                lng: 104.65 + ((hash % 50) / 1000)   // range: 104.65 s/d 104.70
+            };
+        }
+
+        // --- Haversine Formula (hitungan jarak km) ---
+        function getDistanceKm(lat1, lng1, lat2, lng2) {
+            const R = 6371;
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLng = (lng2 - lng1) * Math.PI / 180;
+
+            const a =
+                Math.sin(dLat / 2) ** 2 +
+                Math.cos(lat1 * Math.PI / 180) *
+                Math.cos(lat2 * Math.PI / 180) *
+                Math.sin(dLng / 2) ** 2;
+
+            return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        }
+
+        // DOM elements
+        const orderItemsEl = document.getElementById("orderItems");
+        const subtotalEl = document.getElementById("subtotalValue");
+        const totalAkhirEl = document.getElementById("totalAkhir");
+
+        let subtotal = 0;
+
+        // --- RENDER ITEMS ---
+        cart.forEach(item => {
+            // Make sure price is a clean number
+            let price = parseInt(item.price.toString().replace(/\D/g, ""));
+
+            const div = document.createElement("div");
+            div.classList.add("order-item");
+            div.innerHTML = `
+    <span>${item.title} × ${item.qty}</span>
+    <span>Rp ${price * item.qty}</span>
+  `;
+            orderItemsEl.appendChild(div);
+
+            subtotal += price * item.qty;
+        });
+
+        subtotalEl.textContent = `Rp ${subtotal.toLocaleString("id-ID")}`;
+
+        function calculateOngkir() {
+            const address = document.getElementById("alamat").value.trim();
+            if (!address) return 5000; // default 5k
+
+            const userLoc = dummyGeocode(address);
+            const distance = getDistanceKm(STORE_LAT, STORE_LNG, userLoc.lat, userLoc.lng);
+
+            // Dummy formula: 5000 + 5000 per 100 km
+            const extra = Math.floor(distance / 100) * 5000;
+
+            return 5000 + extra;
+        }
+
+        function updateTotal() {
+            // --- Recalculate subtotal every time ---
+            let subtotal = 0;
+            cart.forEach(item => {
+                let price = parseInt(item.price.toString().replace(/\D/g, ""));
+                subtotal += price * item.qty;
+            });
+
+            // --- Calculate ongkir based on latest subtotal ---
+            let ongkir = calculateOngkir();
+
+            document.getElementById("subtotalValue").textContent =
+                "Rp " + subtotal.toLocaleString("id-ID");
+
+            document.getElementById("ongkirValue").textContent =
+                "Rp " + ongkir.toLocaleString("id-ID");
+
+            document.getElementById("totalAkhir").textContent =
+                "Rp " + (subtotal + ongkir).toLocaleString("id-ID");
+        }
+
+        updateTotal()
+
+        document.getElementById("alamat").addEventListener("input", updateTotal);
+        // --- ORDER BUTTON ---
+     <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+  // Firebase config kamu
   const firebaseConfig = {
     apiKey: "AIzaSyDydrWg96Oq-r8FfB4s9x8-JcFteXkNfEE",
     authDomain: "seven-colours-d4ced.firebaseapp.com",
@@ -278,63 +370,59 @@
     appId: "1:736854022160:web:1bf496a7ac0047937c5295"
   };
 
-  // 3. Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 
-  // 4. REPLACE tombol Place Order agar nyimpen ke Firestore
+  async function saveOrderToFirestore(orderData) {
+    try {
+      await addDoc(collection(db, "orders"), orderData);
+      console.log("Pesanan berhasil tersimpan!");
+      return true;
+    } catch (err) {
+      console.error("Gagal menyimpan:", err);
+      return false;
+    }
+  }
+
   document.getElementById("btnPlaceOrder").addEventListener("click", async () => {
-      const nama = document.getElementById("nama").value.trim();
-      const hp = document.getElementById("hp").value.trim();
-      const alamat = document.getElementById("alamat").value.trim();
-      const pay = document.querySelector('input[name="pay"]:checked').value;
+    const nama = document.getElementById("nama").value.trim();
+    const hp = document.getElementById("hp").value.trim();
+    const alamat = document.getElementById("alamat").value.trim();
+    const metode = document.querySelector("input[name='pay']:checked").value;
 
-      if (!nama || !hp || !alamat) {
-          alert("Isi form terlebih dahulu!");
-          return;
-      }
+    if (!nama || !hp || !alamat) {
+      alert("Isi form terlebih dahulu!");
+      return;
+    }
 
-      // hitung ulang subtotal & ongkir
-      let subtotal = 0;
-      cart.forEach(item => {
-          let price = parseInt(item.price.toString().replace(/\D/g, ""));
-          subtotal += price * item.qty;
-      });
-      let ongkir = calculateOngkir();
-      let total = subtotal + ongkir;
+    const cart = JSON.parse(localStorage.getItem("mini_cart_v1")) || [];
 
-      // 5. SIMPAN KE FIRESTORE
-      try {
-          await addDoc(collection(db, "orders"), {
-              nama,
-              hp,
-              alamat,
-              metodePembayaran: pay,
-              items: cart,
-              subtotal,
-              ongkir,
-              total,
-              createdAt: serverTimestamp()
-          });
+    const order = {
+      nama,
+      hp,
+      alamat,
+      metode,
+      cart,
+      subtotal,
+      ongkir: calculateOngkir(),
+      total: subtotal + calculateOngkir(),
+      tanggal: new Date().toISOString()
+    };
 
-          // sukses
-          alert("Pesanan kamu berhasil disimpan!");
+    const success = await saveOrderToFirestore(order);
 
-          localStorage.removeItem("mini_cart_v1");
+    if (success) {
+      alert("Pesanan Anda berhasil disimpan!");
+      localStorage.removeItem("mini_cart_v1");
 
-          setTimeout(() => {
-              window.location.href = "success.html";
-          }, 200);
-
-      } catch (error) {
-          alert("Gagal menyimpan order: " + error.message);
-      }
+      setTimeout(() => {
+        window.location.href = "success.html";
+      }, 300);
+    } else {
+      alert("Terjadi kesalahan saat menyimpan pesanan.");
+    }
   });
 </script>
-
-
-
 </body>
 
 </html>
-
